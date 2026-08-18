@@ -26,6 +26,7 @@ import {
   Users,
   Video,
   Wifi,
+  Sparkle,
 } from 'lucide-react';
 import {
   WorkspaceTypeData,
@@ -40,13 +41,13 @@ import {
 import { formatINR, getWhatsAppUrl } from '@/lib/utils';
 import { FranchiseCalculator } from '@/components/franchise/FranchiseCalculator';
 import { LeadForm } from '@/components/forms/LeadForm';
+import { Marquee } from '@/components/ui/Marquee';
 import {
   FadeUp,
   FadeIn,
   ScaleIn,
   StaggerContainer,
   StaggerItem,
-  ImageReveal,
 } from '@/components/motion/MotionWrapper';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -79,23 +80,30 @@ export function HomeClient({
   const selectedWorkspace =
     workspaces.find((w) => w.slug === activeSpaceTab) || workspaces[0];
 
-  const whatsappUrl = getWhatsAppUrl(
-    settings.whatsappNumber,
-    'Hi Yoffices, I would like to inquire about workspaces and site visits in Gurgaon.'
-  );
+  const heroMarquee = [
+    'SECTOR 45 GURGAON FLAGSHIP',
+    '1GBPS DEDICATED FIBER',
+    '100% DG POWER BACKUP',
+    '₹5,000/MO FRANCHISE CASH FLOW',
+    'ACOUSTIC CABINS & BOARDROOMS',
+    'HARYANA GST & ROC REGISTRATION',
+    '24/7 BIOMETRIC SMART ACCESS',
+    'WORK + STAY CO-LIVING SUITES',
+    'SECTOR 32 INSTITUTIONAL DESK',
+  ];
 
   return (
     <div className="flex flex-col w-full bg-[#F0EFE9] text-[#111111] overflow-hidden">
       {/* ========================================================= */}
-      {/* 1. HERO SECTION (Nestor Framer Aesthetic)                 */}
+      {/* 1. HERO SECTION (Nestor + Socio-Space Framer Aesthetic)   */}
       {/* ========================================================= */}
-      <section className="relative pt-12 pb-20 sm:pt-20 sm:pb-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06] overflow-hidden">
+      <section className="relative pt-10 pb-16 sm:pt-20 sm:pb-24 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08] overflow-hidden">
         <div className="max-w-7xl mx-auto space-y-12">
           {/* Top Tag & Monospace Pill */}
           <FadeUp delay={0.1} className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span className="nestor-pill bg-black/5 border-black/10 text-gray-800 font-mono text-[11px]">
-                <span className="w-2 h-2 rounded-full bg-[#C91D24] animate-pulse" />
+              <span className="nestor-pill bg-black/5 border-black/10 text-gray-900 font-mono text-[11px]">
+                <span className="w-2 h-2 rounded-full bg-[#C91D24] animate-ping" />
                 [ GURUGRAM • SECTOR 45 & 32 ]
               </span>
               <span className="hidden sm:inline-flex nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[11px]">
@@ -103,12 +111,13 @@ export function HomeClient({
               </span>
             </div>
 
-            <div className="text-xs font-mono text-gray-500 uppercase tracking-widest">
+            <div className="text-xs font-mono text-gray-500 uppercase tracking-widest flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               GURGAON METRO CORRIDOR
             </div>
           </FadeUp>
 
-          {/* Main Headline & Intro */}
+          {/* Main Headline & Hero Action */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <FadeUp delay={0.2} className="lg:col-span-8 space-y-4">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#111111] leading-[1.05] font-sans">
@@ -209,31 +218,24 @@ export function HomeClient({
               </div>
             </div>
           </FadeUp>
-
-          {/* Quick Monospace Stats Strip */}
-          <FadeUp delay={0.5} className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-4 border-t border-black/[0.06]">
-            <div className="p-4 rounded-2xl bg-white/60 border border-black/[0.05]">
-              <span className="text-[10px] font-mono uppercase text-gray-500 block">[ FIBER INTERNET ]</span>
-              <strong className="text-sm sm:text-base font-bold text-gray-900 mt-0.5 block">1Gbps Redundant Line</strong>
-            </div>
-            <div className="p-4 rounded-2xl bg-white/60 border border-black/[0.05]">
-              <span className="text-[10px] font-mono uppercase text-gray-500 block">[ POWER BACKUP ]</span>
-              <strong className="text-sm sm:text-base font-bold text-gray-900 mt-0.5 block">100% DG & Online UPS</strong>
-            </div>
-            <div className="p-4 rounded-2xl bg-white/60 border border-black/[0.05]">
-              <span className="text-[10px] font-mono uppercase text-gray-500 block">[ SECURITY CHEQUES ]</span>
-              <strong className="text-sm sm:text-base font-bold text-gray-900 mt-0.5 block">3 Annual Post-Dated</strong>
-            </div>
-            <div className="p-4 rounded-2xl bg-white/60 border border-black/[0.05]">
-              <span className="text-[10px] font-mono uppercase text-gray-500 block">[ METRO PROXIMITY ]</span>
-              <strong className="text-sm sm:text-base font-bold text-gray-900 mt-0.5 block">Near Millennium City</strong>
-            </div>
-          </FadeUp>
         </div>
       </section>
 
       {/* ========================================================= */}
-      {/* 2. NESTOR SPACES SHOWCASE (Tabbed Dynamic Slider)         */}
+      {/* 2. LIVE INFINITE MARQUEE TICKER (Socio Space Style)       */}
+      {/* ========================================================= */}
+      <div className="bg-[#111111] text-white py-1">
+        <Marquee
+          items={heroMarquee}
+          speed={24}
+          className="border-none py-3"
+          itemClassName="text-white/90 hover:text-white transition-colors text-xs sm:text-sm font-mono tracking-widest"
+          separator={<span className="text-[#C91D24] text-xs font-bold">✦</span>}
+        />
+      </div>
+
+      {/* ========================================================= */}
+      {/* 3. WORKSPACES SHOWCASE (Tabbed Dynamic Slider)            */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
@@ -241,7 +243,7 @@ export function HomeClient({
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeUp className="space-y-2">
               <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-                [ 01 • WORKSPACE CATEGORIES ]
+                [ 01 / 05 • WORKSPACE CATEGORIES ]
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
                 From quiet nooks to vibrant hubs.
@@ -360,13 +362,13 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 3. BUSINESS SOLUTIONS (Virtual Office, Employee, Co-Living)*/}
+      {/* 4. BUSINESS SOLUTIONS (Virtual Office, Employee, Co-Living)*/}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <FadeUp className="space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-              [ 02 • INTEGRATED ENTERPRISE PLATFORM ]
+              [ 02 / 05 • INTEGRATED ENTERPRISE PLATFORM ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
               More than just office desks.
@@ -477,14 +479,14 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 4. COMMERCIAL FRANCHISE PLATFORM & LIVE CALCULATOR        */}
+      {/* 5. COMMERCIAL FRANCHISE PLATFORM & LIVE CALCULATOR        */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeUp className="space-y-2">
               <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[11px]">
-                [ 03 • ASSET-BACKED BUSINESS OPPORTUNITY ]
+                [ 03 / 05 • ASSET-BACKED BUSINESS OPPORTUNITY ]
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
                 Commercial Real Estate Franchise
@@ -512,13 +514,13 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 5. GURUGRAM CENTERS & LOCATIONS SPOTLIGHT                 */}
+      {/* 6. GURUGRAM CENTERS & LOCATIONS SPOTLIGHT                 */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <FadeUp className="space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-              [ 04 • GURGAON CENTERS ]
+              [ 04 / 05 • GURGAON CENTERS ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
               Two Strategic Addresses. One Standard.
@@ -613,14 +615,14 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 6. MEDIA & VIDEO HUB                                      */}
+      {/* 7. MEDIA & VIDEO HUB                                      */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeUp className="space-y-2">
               <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-                [ 05 • OFFICIAL VIDEO ECOSYSTEM ]
+                [ 05 / 05 • OFFICIAL VIDEO ECOSYSTEM ]
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
                 Yoffices Media & Video Tours
@@ -691,13 +693,13 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 7. SOCIAL PROOF & TESTIMONIALS                            */}
+      {/* 8. SOCIAL PROOF & TESTIMONIALS                            */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <FadeUp className="space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-              [ 06 • MEMBER ENDORSEMENTS ]
+              [ MEMBER REVIEWS ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
               Trusted by Gurgaon Enterprises
@@ -721,7 +723,7 @@ export function HomeClient({
                     ))}
                   </div>
                   <p className="text-xs sm:text-sm text-gray-700 leading-relaxed italic">
-                    "{test.content}"
+                    &ldquo;{test.content}&rdquo;
                   </p>
                 </div>
 
@@ -745,13 +747,13 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 8. FAQS ACCORDION                                         */}
+      {/* 9. FAQS ACCORDION                                         */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <div className="max-w-4xl mx-auto space-y-10">
           <FadeUp className="text-center space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-              [ 07 • ANSWERS & TRANSPARENCY ]
+              [ ANSWERS & TRANSPARENCY ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
               Frequently Asked Questions
@@ -799,7 +801,7 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 9. HIGH-CONVERSION CONTACT & LEAD FORM                    */}
+      {/* 10. HIGH-CONVERSION CONTACT & LEAD FORM                   */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto space-y-12">
