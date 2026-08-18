@@ -49,6 +49,7 @@ import {
   StaggerContainer,
   StaggerItem,
 } from '@/components/motion/MotionWrapper';
+import { FounderVideoShowcase } from '@/components/home/FounderVideoShowcase';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface HomeClientProps {
@@ -227,7 +228,7 @@ export function HomeClient({
       <div className="bg-[#111111] text-white py-1">
         <Marquee
           items={heroMarquee}
-          speed={24}
+          speed={60}
           className="border-none py-3"
           itemClassName="text-white/90 hover:text-white transition-colors text-xs sm:text-sm font-mono tracking-widest"
           separator={<span className="text-[#C91D24] text-xs font-bold">✦</span>}
@@ -249,136 +250,129 @@ export function HomeClient({
                 From quiet nooks to vibrant hubs.
               </h2>
               <p className="text-sm sm:text-base text-gray-600 max-w-xl">
-                Our rooms adapt to your rhythm. Pick a space that fits not just your work, but your energy.
+                Choose the exact configuration that fits your team: lockable private cabins, assigned desks, flexible hot desks, or 4K boardrooms.
               </p>
             </FadeUp>
 
-            <FadeUp delay={0.1} className="flex items-center gap-2">
+            <FadeUp delay={0.1}>
               <Link
                 href="/workspaces"
                 className="text-xs font-bold text-[#C91D24] hover:underline inline-flex items-center gap-1"
               >
-                <span>View All 5 Types</span>
+                <span>Browse All Categories</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </FadeUp>
           </div>
 
-          {/* Interactive Workspace Category Pills */}
-          <FadeUp delay={0.2} className="flex flex-wrap items-center gap-2 border-b border-black/[0.06] pb-4">
-            {workspaces.map((ws) => {
-              const isActive = ws.slug === activeSpaceTab;
-              return (
-                <button
-                  key={ws.slug}
-                  onClick={() => setActiveSpaceTab(ws.slug)}
-                  className={`px-4 py-2.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#111111] text-white shadow-md'
-                      : 'bg-white/80 text-gray-700 hover:bg-white hover:text-black border border-black/5'
-                  }`}
-                >
-                  {ws.name}
-                </button>
-              );
-            })}
+          {/* Interactive Tab Switcher */}
+          <FadeUp delay={0.2} className="flex flex-wrap gap-2 border-b border-black/10 pb-4">
+            {workspaces.map((ws) => (
+              <button
+                key={ws.id}
+                onClick={() => setActiveSpaceTab(ws.slug)}
+                className={`px-5 py-2.5 rounded-xl font-bold text-xs transition-all duration-200 ${
+                  activeSpaceTab === ws.slug
+                    ? 'bg-[#111111] text-white shadow-md'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-black/5'
+                }`}
+              >
+                {ws.name}
+              </button>
+            ))}
           </FadeUp>
 
-          {/* Active Workspace Showcase Card */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedWorkspace?.slug || 'ws'}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-white rounded-3xl p-6 sm:p-10 border border-black/[0.07] shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-            >
-              {/* Image Column */}
-              <div className="lg:col-span-7 relative h-[320px] sm:h-[440px] rounded-2xl overflow-hidden group">
-                <img
-                  src={selectedWorkspace.heroImage}
-                  alt={selectedWorkspace.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute top-4 left-4 bg-black/80 text-white font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full backdrop-blur-md">
-                  Starting from {selectedWorkspace.startingPrice} /{selectedWorkspace.priceUnit}
-                </div>
-              </div>
+          {/* Active Workspace Feature Card */}
+          {selectedWorkspace && (
+            <FadeUp delay={0.3}>
+              <div className="nestor-card p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-6 space-y-6">
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase font-bold text-gray-400">
+                      SELECTED SOLUTION
+                    </span>
+                    <h3 className="text-2xl sm:text-4xl font-black text-gray-900 font-sans">
+                      {selectedWorkspace.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {selectedWorkspace.fullDesc}
+                    </p>
+                  </div>
 
-              {/* Text & Features Column */}
-              <div className="lg:col-span-5 space-y-6">
-                <div className="space-y-2">
-                  <span className="text-xs font-mono font-bold uppercase text-[#C91D24]">
+                  <div className="p-4 rounded-2xl bg-[#F0EFE9] border border-black/5 space-y-2">
+                    <div className="text-xs text-gray-500 font-mono">STARTING RATE</div>
+                    <div className="text-2xl sm:text-3xl font-black text-[#C91D24] font-sans">
+                      {selectedWorkspace.startingPrice}{' '}
+                      <span className="text-xs font-normal text-gray-600 font-sans">
+                        /{selectedWorkspace.priceUnit}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase font-bold text-gray-400 block">
+                      WHAT IS INCLUDED
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-700">
+                      {selectedWorkspace.features.map((feat: string, idx: number) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex flex-wrap gap-3">
+                    <Link
+                      href={`/book-a-visit?space=${encodeURIComponent(selectedWorkspace.name)}`}
+                      className="px-6 py-3 rounded-xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs shadow-md transition-colors"
+                    >
+                      Book Tour for {selectedWorkspace.name}
+                    </Link>
+                    <Link
+                      href={`/workspaces/${selectedWorkspace.slug}`}
+                      className="px-6 py-3 rounded-xl bg-white hover:bg-gray-50 border border-black/10 text-gray-900 font-bold text-xs transition-colors"
+                    >
+                      View Full Details
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6 relative h-[320px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border border-black/5 group">
+                  <img
+                    src={selectedWorkspace.gallery?.[0] || selectedWorkspace.heroImage}
+                    alt={selectedWorkspace.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute top-4 right-4 bg-black/80 text-white font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full backdrop-blur-md">
                     SECTOR 45 & 32 GURUGRAM
-                  </span>
-                  <h3 className="text-2xl sm:text-3xl font-black text-gray-900 font-sans">
-                    {selectedWorkspace.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    {selectedWorkspace.fullDesc}
-                  </p>
-                </div>
-
-                {selectedWorkspace.idealFor && (
-                  <div className="p-3.5 bg-[#F0EFE9] rounded-xl text-xs text-gray-700 font-medium">
-                    <strong className="text-gray-900">Recommended For:</strong>{' '}
-                    {selectedWorkspace.idealFor}
                   </div>
-                )}
-
-                <div className="space-y-2 pt-2 border-t border-gray-100">
-                  <span className="text-[11px] font-mono uppercase text-gray-400 block">
-                    INCLUDED SPECIFICATIONS
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-700">
-                    {selectedWorkspace.features.slice(0, 4).map((feat: string, idx: number) => (
-                      <div key={idx} className="flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span>{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-4 flex flex-col sm:flex-row items-center gap-3">
-                  <Link
-                    href={`/book-a-visit?space=${encodeURIComponent(selectedWorkspace.name)}`}
-                    className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs shadow-md transition-all text-center"
-                  >
-                    Book Guided Tour
-                  </Link>
-                  <Link
-                    href={`/workspaces/${selectedWorkspace.slug}`}
-                    className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#F0EFE9] hover:bg-gray-200 text-gray-900 font-bold text-xs transition-all text-center"
-                  >
-                    View Space Details
-                  </Link>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </FadeUp>
+          )}
         </div>
       </section>
 
       {/* ========================================================= */}
-      {/* 4. BUSINESS SOLUTIONS (Virtual Office, Employee, Co-Living)*/}
+      {/* 4. THREE SPECIALIZED VALUE PROPOSITIONS BENTO              */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
-          <FadeUp className="space-y-2">
+          <FadeUp className="text-center max-w-2xl mx-auto space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-              [ 02 / 05 • INTEGRATED ENTERPRISE PLATFORM ]
+              [ 02 / 05 • SPECIALIZED CAPABILITIES ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
-              More than just office desks.
+              Beyond Standard Real Estate
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 max-w-2xl">
-              Complete business ecosystem spanning Haryana GST compliance, dedicated shared resources, and luxury Work + Stay co-living suites.
+            <p className="text-sm sm:text-base text-gray-600">
+              Integrated solutions combining statutory compliance, shared manpower, and residential accommodations.
             </p>
           </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Virtual Office Card */}
             <FadeUp delay={0.1} className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6">
               <div className="space-y-4">
@@ -389,12 +383,12 @@ export function HomeClient({
                   Virtual Office for GST & ROC
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                  Prime commercial registration address at Sector 32 & 45 Gurugram with notarized Rent Agreement, Owner NOC, paid electricity bill, and physical tax inspection desks.
+                  Establish an instant statutory presence in Gurugram Sector 32 or Sector 45. Includes 100% compliant Rent Agreement, owner NOC, paid electricity bills, and dedicated signage desk.
                 </p>
                 <div className="space-y-1.5 pt-2 text-xs text-gray-700">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>Haryana GSTIN Filing Ready</span>
+                    <span>Haryana GSTIN Issuance Guarantee</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
@@ -615,82 +609,9 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 7. MEDIA & VIDEO HUB                                      */}
+      {/* 7. FOUNDER VISION & MEDIA MASTERCLASS (PROMINENT VIDEO)   */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <FadeUp className="space-y-2">
-              <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-                [ 05 / 05 • OFFICIAL VIDEO ECOSYSTEM ]
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
-                Yoffices Media & Video Tours
-              </h2>
-              <p className="text-sm sm:text-base text-gray-600 max-w-xl">
-                Watch physical cabin walkthroughs, rental income breakdowns, and resident interviews.
-              </p>
-            </FadeUp>
-
-            <FadeUp delay={0.1}>
-              <Link
-                href="/media"
-                className="text-xs font-bold text-[#C91D24] hover:underline inline-flex items-center gap-1"
-              >
-                <span>Browse All Videos</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </FadeUp>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {mediaVideos.slice(0, 3).map((vid, idx) => (
-              <FadeUp
-                key={vid.id}
-                delay={idx * 0.1}
-                className="nestor-card overflow-hidden flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="relative h-48 w-full bg-black overflow-hidden">
-                    <img
-                      src={vid.thumbnail || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80'}
-                      alt={vid.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full bg-[#C91D24] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Play className="w-5 h-5 fill-white ml-0.5" />
-                      </div>
-                    </div>
-                    <div className="absolute top-3 left-3 bg-black/80 text-white font-mono text-[9px] uppercase px-2 py-0.5 rounded">
-                      {vid.category}
-                    </div>
-                  </div>
-
-                  <div className="p-6 space-y-2">
-                    <h3 className="font-bold text-sm text-gray-900 font-sans group-hover:text-[#C91D24] transition-colors line-clamp-2">
-                      {vid.title}
-                    </h3>
-                    <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
-                      {vid.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-6 pt-0">
-                  <Link
-                    href={`/media/${vid.slug}`}
-                    className="text-xs font-bold text-[#C91D24] hover:underline inline-flex items-center gap-1"
-                  >
-                    <span>Watch Full Video</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FounderVideoShowcase />
 
       {/* ========================================================= */}
       {/* 8. SOCIAL PROOF & TESTIMONIALS                            */}
@@ -750,44 +671,46 @@ export function HomeClient({
       {/* 9. FAQS ACCORDION                                         */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
-        <div className="max-w-4xl mx-auto space-y-10">
+        <div className="max-w-4xl mx-auto space-y-12">
           <FadeUp className="text-center space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-              [ ANSWERS & TRANSPARENCY ]
+              [ FREQUENTLY ASKED QUESTIONS ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
-              Frequently Asked Questions
+              Got questions? We have answers.
             </h2>
-            <p className="text-sm text-gray-600">
-              Clear answers regarding memberships, billing, compliance, and franchise terms.
-            </p>
           </FadeUp>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {faqs.map((faq) => {
               const isOpen = openFaqId === faq.id;
               return (
-                <FadeUp key={faq.id} className="nestor-card overflow-hidden">
+                <FadeUp
+                  key={faq.id}
+                  className="rounded-2xl border border-black/10 bg-white overflow-hidden transition-all shadow-sm"
+                >
                   <button
                     onClick={() => setOpenFaqId(isOpen ? null : faq.id)}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-gray-900"
                   >
-                    <span className="font-bold text-sm sm:text-base text-gray-900 font-sans">
-                      {faq.question}
-                    </span>
-                    <span className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-600 shrink-0">
-                      {isOpen ? '−' : '+'}
+                    <span>{faq.question}</span>
+                    <span
+                      className={`w-7 h-7 rounded-full bg-[#F0EFE9] flex items-center justify-center text-xs transition-transform ${
+                        isOpen ? 'rotate-180 bg-[#C91D24] text-white' : ''
+                      }`}
+                    >
+                      ↓
                     </span>
                   </button>
 
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="px-6 pb-6 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-3"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="px-6 pb-6 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4"
                       >
                         {faq.answer}
                       </motion.div>
@@ -801,28 +724,114 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 10. HIGH-CONVERSION CONTACT & LEAD FORM                   */}
+      {/* 10. EDITORIAL INSIGHTS & BLOG HIGHLIGHTS                   */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-5xl mx-auto space-y-12">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <FadeUp className="space-y-2">
+              <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
+                [ EDITORIAL PERSPECTIVES ]
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
+                Insights & Market Research
+              </h2>
+            </FadeUp>
+
+            <FadeUp delay={0.1}>
+              <Link
+                href="/blog"
+                className="text-xs font-bold text-[#C91D24] hover:underline inline-flex items-center gap-1"
+              >
+                <span>Read All Insights</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </FadeUp>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {blogPosts.slice(0, 2).map((post, idx) => (
+              <FadeUp
+                key={post.id}
+                delay={idx * 0.15}
+                className="nestor-card overflow-hidden flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="relative h-60 w-full bg-gray-200 overflow-hidden">
+                    <img
+                      src={post.coverImage}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute top-4 left-4 bg-black/80 text-white font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full backdrop-blur-md">
+                      {post.category}
+                    </div>
+                  </div>
+
+                  <div className="p-6 sm:p-8 space-y-3">
+                    <div className="flex items-center gap-3 text-[11px] font-mono text-gray-500">
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3 h-3 text-[#C91D24]" />
+                        {post.readTime}
+                      </span>
+                      <span>•</span>
+                      <span>
+                        {new Date(post.publishedAt).toLocaleDateString('en-IN', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-gray-900 font-sans group-hover:text-[#C91D24] transition-colors leading-snug">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 sm:p-8 pt-0 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#C91D24]">
+                  <Link href={`/blog/${post.slug}`} className="hover:underline inline-flex items-center gap-1">
+                    <span>Read Article</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <span className="text-[11px] text-gray-400 font-mono font-normal">
+                    {post.author}
+                  </span>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 11. LEAD INQUIRY & CONTACT FORM SECTION                   */}
+      {/* ========================================================= */}
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9]">
+        <div className="max-w-4xl mx-auto space-y-8">
           <FadeUp className="text-center space-y-2">
             <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[11px]">
-              [ GET IN TOUCH ]
+              [ CONNECT WITH YOFFICES ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
               Ready to Upgrade Your Workspace?
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto">
-              Schedule a guided physical tour of Sector 45 or request a customized corporate proposal for your team.
+            <p className="text-sm text-gray-600 max-w-xl mx-auto">
+              Our team will prepare customized floor layouts, pricing proposals, or franchise term sheets tailored to your goals.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.2}>
             <LeadForm
               defaultService="Private Office"
-              title="Speak with a Workspace Advisor"
-              subtitle="Fill in your details and our team will get in touch within 30 minutes."
-              source="Homepage Bottom"
+              title="Get Customized Proposal & Pricing"
+              subtitle="Submit details for same-day callback and VIP walk-through pass."
+              source="Homepage Lead Section"
             />
           </FadeUp>
         </div>

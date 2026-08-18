@@ -12,6 +12,8 @@ import {
   Shield,
   ArrowRight,
   Layers,
+  Coins,
+  FileCheck2,
 } from 'lucide-react';
 import { FranchiseTermData } from '@/types';
 import { FadeUp } from '@/components/motion/MotionWrapper';
@@ -27,8 +29,26 @@ export function FranchiseHowItWorksClient({ terms }: FranchiseHowItWorksClientPr
     '3 ANNUAL POST-DATED SECURITY CHEQUES',
     'CONTRACTUAL MONTHLY DISBURSEMENTS',
     'ZERO OPERATING EXPENSES (OPEX)',
-    'ANNUAL CHEQUE RECONCILIATION',
+    'ANNUAL CHEQUE RETURN PROMPT',
     'YEAR 3 MATURITY SETTLEMENT',
+  ];
+
+  const chequeSteps = [
+    {
+      year: '01',
+      title: 'Year 1 Complete',
+      desc: 'Return first annual post-dated security cheque to Yoffices upon successful 12-month disbursements.',
+    },
+    {
+      year: '02',
+      title: 'Year 2 Complete',
+      desc: 'Return second annual post-dated security cheque to Yoffices upon successful 24-month disbursements.',
+    },
+    {
+      year: '03',
+      title: 'Year 3 Complete',
+      desc: 'Return third annual post-dated security cheque alongside final maturity principal settlement.',
+    },
   ];
 
   return (
@@ -38,19 +58,19 @@ export function FranchiseHowItWorksClient({ terms }: FranchiseHowItWorksClientPr
         <div className="max-w-5xl mx-auto text-center space-y-6">
           <FadeUp delay={0.1}>
             <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[11px]">
-              [ COMMERCIAL PROCESS & GOVERNANCE ]
+              [ LETTER OF INTENT (LOI) • COMMERCIAL GOVERNANCE ]
             </span>
           </FadeUp>
 
           <FadeUp delay={0.2}>
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-[#111111] font-sans">
-              Franchise Terms & Protocol
+              Franchise Terms & Conditions
             </h1>
           </FadeUp>
 
           <FadeUp delay={0.3}>
             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              A transparent 6-stage lifecycle governing the execution, security cheques issuance, annual reconciliation, and final settlement over a 3-year validity period.
+              Official commercial roadmap governing initial payment, security cheques issuance, annual cheque return process, and 3-year maturity settlement.
             </p>
           </FadeUp>
         </div>
@@ -66,62 +86,139 @@ export function FranchiseHowItWorksClient({ terms }: FranchiseHowItWorksClientPr
         />
       </div>
 
-      {/* 6 Stage Timeline Bento */}
+      {/* 3 Core Contractual Terms from PDF Page 3 */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {terms.map((term, idx) => (
-              <FadeUp
-                key={term.id}
-                delay={idx * 0.1}
-                className="nestor-card p-8 shadow-lg flex flex-col justify-between space-y-4"
-              >
-                <div className="space-y-3">
-                  <div className="w-12 h-12 rounded-2xl bg-[#C91D24] text-white font-black text-base flex items-center justify-center font-mono">
-                    0{term.stepNumber}
-                  </div>
-                  <h2 className="text-xl font-bold text-gray-900 font-sans">{term.title}</h2>
-                  {term.subtitle && (
-                    <div className="text-[10px] font-mono font-bold text-[#C5A880] uppercase tracking-wider">
-                      {term.subtitle}
-                    </div>
-                  )}
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-2">
-                    {term.description}
-                  </p>
+          <FadeUp className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-800">
+              [ 01 / 03 • CORE LOI COVENANTS ]
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-gray-900 font-sans tracking-tight">
+              Terms and Conditions
+            </h2>
+            <p className="text-sm text-gray-600">
+              Contractual obligations executed between Buyer (First Party) and Yoffices (Second Party).
+            </p>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* 01 Initial Payment */}
+            <FadeUp delay={0.1} className="nestor-card p-8 space-y-4 shadow-xl flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-[#C91D24] text-white font-black text-sm flex items-center justify-center font-mono">
+                  01
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 font-sans">Initial Payment Requirement</h3>
+                <div className="text-[10px] font-mono font-bold text-[#C5A880] uppercase">
+                  DATE OF SIGNING
+                </div>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-2">
+                  On the Date of Signing of the agreement of franchise the Buyer i.e. The First Party has to pay the principle amount to Yoffices i.e. The Second Party.
+                </p>
+              </div>
+            </FadeUp>
+
+            {/* 02 Security Cheques */}
+            <FadeUp delay={0.2} className="nestor-card p-8 space-y-4 shadow-xl flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-[#111111] text-white font-black text-sm flex items-center justify-center font-mono">
+                  02
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 font-sans">Security Cheques Protocol</h3>
+                <div className="text-[10px] font-mono font-bold text-[#C5A880] uppercase">
+                  3 POST-DATED CHEQUES
+                </div>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-2">
+                  Against this investment by the first party, he/she is entitled to get 3 Post-Dated Cheques, one each of respective total rental to be received in a single year. These 3 cheques shall not be encashed and shall be used as a method of security given by Yoffices.
+                </p>
+              </div>
+            </FadeUp>
+
+            {/* 03 Validity Period */}
+            <FadeUp delay={0.3} className="nestor-card p-8 space-y-4 shadow-xl flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-[#C5A880] text-[#111111] font-black text-sm flex items-center justify-center font-mono">
+                  03
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 font-sans">Franchise Validity Period</h3>
+                <div className="text-[10px] font-mono font-bold text-[#C91D24] uppercase">
+                  3 YEARS DURATION
+                </div>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-2">
+                  This franchise is only valid for a time period of three years from the date of signing after which the first party shall receive his/her respective principle amount paid at the time of maturity along with the respective rental of every year.
+                </p>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* Annual Cheque Return Process from PDF Page 4 */}
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.08]">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <FadeUp className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-800">
+              [ 02 / 03 • YEARLY OBLIGATION ]
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-gray-900 font-sans tracking-tight">
+              Annual Cheque Return Process
+            </h2>
+            <p className="text-sm text-gray-600">
+              At the end of every year from the date of signing the first party shall return back the cheque for the respective year back to Yoffices.
+            </p>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {chequeSteps.map((step, idx) => (
+              <FadeUp
+                key={idx}
+                delay={idx * 0.1}
+                className="p-8 rounded-3xl bg-[#F0EFE9] border border-black/5 space-y-4 shadow-md"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-[#C91D24] text-white font-mono font-black text-sm flex items-center justify-center">
+                  {step.year}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 font-sans">{step.title}</h3>
+                <div className="text-xs font-mono font-bold text-[#C91D24] uppercase">
+                  RETURN {idx === 0 ? 'FIRST' : idx === 1 ? 'SECOND' : 'THIRD'} CHEQUE
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed">{step.desc}</p>
               </FadeUp>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Key Contractual Terms Box */}
-          <FadeUp delay={0.2} className="bg-[#111111] text-white p-8 sm:p-12 rounded-3xl border border-black/10 space-y-8 shadow-2xl">
-            <div>
+      {/* Maturity and Final Settlement from PDF Page 5 */}
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto space-y-12">
+          <FadeUp className="text-center space-y-2">
+            <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[11px]">
+              [ 03 / 03 • MATURITY TIMELINE ]
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-gray-900 font-sans tracking-tight">
+              Maturity and Final Settlement
+            </h2>
+          </FadeUp>
+
+          <FadeUp delay={0.2} className="bg-[#111111] text-white p-8 sm:p-12 rounded-3xl border border-black/10 space-y-6 shadow-2xl">
+            <div className="space-y-3">
               <span className="nestor-pill bg-white/10 text-[#C5A880] font-mono text-[10px]">
-                [ 4 CONTRACTUAL PILLARS ]
+                [ 36-MONTH MATURITY TIMELINE ]
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black font-sans text-white mt-2">
-                Summary of Commercial Governance
-              </h2>
+              <h3 className="text-2xl sm:text-3xl font-black font-sans text-white">
+                Maturity Settlement Protocol
+              </h3>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                At the time of Maturity (which is exactly 3 years after the date of signing of this agreement) the first party shall receive his/her respective principle amount paid at the time of signing along with the respective rental of every year.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs text-gray-300">
-              <div className="space-y-2 bg-white/5 p-5 rounded-2xl border border-white/10">
-                <strong className="text-[#C5A880] text-sm block font-sans">1. Agreement Validity</strong>
-                <p className="leading-relaxed">The standard commercial franchise agreement is executed for a fixed validity tenure of exactly three (3) years (36 months).</p>
-              </div>
-              <div className="space-y-2 bg-white/5 p-5 rounded-2xl border border-white/10">
-                <strong className="text-[#C5A880] text-sm block font-sans">2. Security Cheque Protocol</strong>
-                <p className="leading-relaxed">Yoffices issues three (3) post-dated annual cheques to the partner corresponding to the annual rental commitments as contractual security.</p>
-              </div>
-              <div className="space-y-2 bg-white/5 p-5 rounded-2xl border border-white/10">
-                <strong className="text-[#C5A880] text-sm block font-sans">3. Annual Reconciliation</strong>
-                <p className="leading-relaxed">At the close of each completed 12-month operational cycle, the security cheque for that respective year is reconciled upon successful monthly disbursements.</p>
-              </div>
-              <div className="space-y-2 bg-white/5 p-5 rounded-2xl border border-white/10">
-                <strong className="text-[#C5A880] text-sm block font-sans">4. Year 3 Maturity Settlement</strong>
-                <p className="leading-relaxed">Full principal and contractual maturity settlement is executed upon the completion of the 36-month period as stipulated in the formal contract.</p>
-              </div>
+            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-xs text-gray-300 space-y-1">
+              <strong className="text-[#C5A880] block font-sans text-sm">Important Calculation Rule:</strong>
+              <p className="leading-relaxed">
+                The maturity date is calculated as exactly 3 years from the date of signing the franchise agreement. At this time, the first party receives both the principle amount and all accumulated rental payments.
+              </p>
             </div>
           </FadeUp>
 
@@ -129,7 +226,7 @@ export function FranchiseHowItWorksClient({ terms }: FranchiseHowItWorksClientPr
           <FadeUp delay={0.3} className="p-5 rounded-2xl bg-white border border-black/10 text-xs text-gray-600 flex items-start gap-3 shadow-sm">
             <Shield className="w-5 h-5 text-[#C91D24] shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              <strong>Statutory Disclosure:</strong> Terms shown are based on information supplied by Yoffices and are subject to the final executed agreement and current approved terms.
+              <strong>Contractual Disclosure:</strong> Terms shown are based on information supplied by Yoffices Letter of Intent (LOI) and are subject to the final executed agreement and current approved terms.
             </p>
           </FadeUp>
 
