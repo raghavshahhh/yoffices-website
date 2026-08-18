@@ -18,6 +18,7 @@ import {
   Lock,
 } from 'lucide-react';
 import { Marquee } from '@/components/ui/Marquee';
+import { Logo } from '@/components/ui/Logo';
 
 export function Footer() {
   const scrollToTop = () => {
@@ -92,19 +93,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-6">
-            <Link href="/" className="flex items-center gap-2.5 group inline-flex">
-              <div className="w-10 h-10 rounded-xl bg-[#C91D24] flex items-center justify-center text-white font-bold text-xl tracking-wider shadow-md">
-                Y
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-black tracking-tight text-white font-sans">
-                  YOFFICES<span className="text-[#C91D24]">.</span>
-                </span>
-                <span className="text-[9px] font-mono uppercase tracking-widest text-gray-400 font-semibold -mt-1">
-                  Managed Workspaces & Living
-                </span>
-              </div>
-            </Link>
+            <Logo
+              variant="light"
+              showSubtitle={true}
+              subtitleText="MANAGED WORKSPACES & LIVING"
+              imgClassName="h-9 sm:h-10"
+            />
 
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-sm">
               Luxury commercial real estate, turnkey private offices, workstations, and fractional franchise cash flow solutions in Gurgaon, Haryana.

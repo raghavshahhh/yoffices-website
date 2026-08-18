@@ -137,21 +137,31 @@ body {
   background: #94A3B8;
 }
 
-/* Infinite Marquee Loop Animations (Luxurious Slow Gliding Speed) */
-@keyframes marqueeLeft {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+/* Infinite Marquee Loop Animations (Luxurious Slow Gliding Speed, Gap-Free & Non-Overlapping) */
+@keyframes marquee-scroll-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
 }
 
-@keyframes marqueeRight {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0%); }
+@keyframes marquee-scroll-right {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .animate-marquee-left {
-  display: flex;
-  width: max-content;
-  animation: marqueeLeft 65s linear infinite;
+  display: flex !important;
+  flex-shrink: 0 !important;
+  width: max-content !important;
+  will-change: transform;
+  animation: marquee-scroll-left 55s linear infinite;
 }
 
 .animate-marquee-left:hover {
@@ -159,9 +169,11 @@ body {
 }
 
 .animate-marquee-right {
-  display: flex;
-  width: max-content;
-  animation: marqueeRight 65s linear infinite;
+  display: flex !important;
+  flex-shrink: 0 !important;
+  width: max-content !important;
+  will-change: transform;
+  animation: marquee-scroll-right 55s linear infinite;
 }
 
 .animate-marquee-right:hover {

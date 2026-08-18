@@ -21,6 +21,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Logo } from '@/components/ui/Logo';
 
 export function Header() {
   const pathname = usePathname();
@@ -156,19 +157,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-[#111111] flex items-center justify-center text-white font-bold text-lg tracking-wider group-hover:bg-[#C91D24] transition-colors shadow-xs">
-              <span className="text-[#C91D24] group-hover:text-white transition-colors">Y</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tight text-[#111111] font-sans">
-                YOFFICES<span className="text-[#C91D24]">.</span>
-              </span>
-              <span className="text-[9px] font-mono uppercase tracking-widest text-gray-500 font-semibold -mt-1">
-                SECTOR 45 & 32
-              </span>
-            </div>
-          </Link>
+          <Logo variant="dark" showSubtitle={true} subtitleText="SECTOR 45 & 32" />
 
           {/* Desktop Navigation (Nestor Pill Buttons) */}
           <nav

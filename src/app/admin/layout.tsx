@@ -89,17 +89,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
 
-          <Link href="/admin" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#C91D24] text-white font-bold flex items-center justify-center text-sm shadow-sm">
-              Y
-            </div>
-            <span className="font-black text-lg text-gray-900 tracking-tight">
-              YOFFICES<span className="text-[#C91D24]">.</span> ADMIN
+          <Link href="/admin" className="flex items-center gap-3">
+            <img
+              src="/images/logo-dark.png"
+              alt="YOFFICES ADMIN"
+              className="h-7 w-auto object-contain"
+            />
+            <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-red-50 text-[#C91D24] border border-red-200">
+              Admin Portal
             </span>
           </Link>
-          <span className="hidden sm:inline-block text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-red-50 text-[#C91D24] border border-red-200">
-            Control Center
-          </span>
         </div>
 
         <div className="flex items-center gap-3 sm:gap-4">

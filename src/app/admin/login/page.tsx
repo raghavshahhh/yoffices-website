@@ -41,11 +41,15 @@ export default function AdminLoginPage() {
   return (
     <div className="min-h-screen bg-[#F4F5F7] flex items-center justify-center p-4 relative overflow-hidden">
       <div className="w-full max-w-md bg-white border border-gray-200 rounded-3xl p-8 sm:p-10 shadow-xl relative z-10 space-y-6">
-        <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-[#C91D24] text-white flex items-center justify-center mx-auto shadow-md">
-            <Shield className="w-6 h-6" />
+        <div className="text-center space-y-3">
+          <div className="flex justify-center mb-1">
+            <img
+              src="/images/logo-dark.png"
+              alt="YOFFICES"
+              className="h-10 w-auto object-contain"
+            />
           </div>
-          <h1 className="text-2xl font-black text-gray-900 font-sans">Yoffices Admin Portal</h1>
+          <h1 className="text-xl font-black text-gray-900 font-sans">Admin Portal Login</h1>
           <p className="text-xs text-gray-500">Executive Control Center & Content Management</p>
         </div>
 
