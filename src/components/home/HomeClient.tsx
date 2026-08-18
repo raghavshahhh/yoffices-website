@@ -473,7 +473,12 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 5. COMMERCIAL FRANCHISE PLATFORM & LIVE CALCULATOR        */}
+      {/* 5. FOUNDER VISION & MEDIA MASTERCLASS (DIRECTLY HERE!)   */}
+      {/* ========================================================= */}
+      <FounderVideoShowcase />
+
+      {/* ========================================================= */}
+      {/* 6. COMMERCIAL FRANCHISE PLATFORM & LIVE CALCULATOR        */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
@@ -508,7 +513,7 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 6. GURUGRAM CENTERS & LOCATIONS SPOTLIGHT                 */}
+      {/* 7. GURUGRAM CENTERS & LOCATIONS SPOTLIGHT                 */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
@@ -607,11 +612,6 @@ export function HomeClient({
           </div>
         </div>
       </section>
-
-      {/* ========================================================= */}
-      {/* 7. FOUNDER VISION & MEDIA MASTERCLASS (PROMINENT VIDEO)   */}
-      {/* ========================================================= */}
-      <FounderVideoShowcase />
 
       {/* ========================================================= */}
       {/* 8. SOCIAL PROOF & TESTIMONIALS                            */}
