@@ -9,25 +9,35 @@ interface FadeUpProps extends HTMLMotionProps<'div'> {
   duration?: number;
   distance?: number;
   className?: string;
+  enableBlur?: boolean;
 }
 
 export function FadeUp({
   children,
   delay = 0,
-  duration = 0.7,
-  distance = 30,
+  duration = 0.5,
+  distance = 18,
   className = '',
+  enableBlur = true,
   ...props
 }: FadeUpProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: distance }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
+      initial={{
+        opacity: 0,
+        y: distance,
+        filter: enableBlur ? 'blur(8px)' : 'none',
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+      }}
+      viewport={{ once: true, margin: '-20px' }}
       transition={{
         duration,
         delay,
-        ease: [0.16, 1, 0.3, 1], // Nestor / Framer smooth spring curve
+        ease: [0.16, 1, 0.3, 1], // Smooth cubic-bezier curve
       }}
       className={className}
       {...props}
@@ -40,15 +50,22 @@ export function FadeUp({
 export function FadeIn({
   children,
   delay = 0,
-  duration = 0.6,
+  duration = 0.45,
   className = '',
+  enableBlur = true,
   ...props
 }: FadeUpProps) {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: '-40px' }}
+      initial={{
+        opacity: 0,
+        filter: enableBlur ? 'blur(6px)' : 'none',
+      }}
+      whileInView={{
+        opacity: 1,
+        filter: 'blur(0px)',
+      }}
+      viewport={{ once: true, margin: '-20px' }}
       transition={{
         duration,
         delay,
@@ -65,15 +82,24 @@ export function FadeIn({
 export function ScaleIn({
   children,
   delay = 0,
-  duration = 0.7,
+  duration = 0.5,
   className = '',
+  enableBlur = true,
   ...props
 }: FadeUpProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.94 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: '-40px' }}
+      initial={{
+        opacity: 0,
+        scale: 0.96,
+        filter: enableBlur ? 'blur(8px)' : 'none',
+      }}
+      whileInView={{
+        opacity: 1,
+        scale: 1,
+        filter: 'blur(0px)',
+      }}
+      viewport={{ once: true, margin: '-20px' }}
       transition={{
         duration,
         delay,
@@ -89,7 +115,7 @@ export function ScaleIn({
 
 export function StaggerContainer({
   children,
-  staggerDelay = 0.1,
+  staggerDelay = 0.08,
   className = '',
   ...props
 }: {
@@ -100,11 +126,11 @@ export function StaggerContainer({
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-40px' }}
+      whileInView="show"
+      viewport={{ once: true, margin: '-20px' }}
       variants={{
         hidden: {},
-        visible: {
+        show: {
           transition: {
             staggerChildren: staggerDelay,
           },
@@ -120,63 +146,27 @@ export function StaggerContainer({
 
 export function StaggerItem({
   children,
-  distance = 25,
   className = '',
   ...props
 }: {
   children: React.ReactNode;
-  distance?: number;
   className?: string;
 } & HTMLMotionProps<'div'>) {
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: distance },
-        visible: {
+        hidden: { opacity: 0, y: 15, filter: 'blur(6px)' },
+        show: {
           opacity: 1,
           y: 0,
-          transition: {
-            duration: 0.7,
-            ease: [0.16, 1, 0.3, 1],
-          },
+          filter: 'blur(0px)',
+          transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
         },
       }}
       className={className}
       {...props}
     >
       {children}
-    </motion.div>
-  );
-}
-
-export function ImageReveal({
-  src,
-  alt,
-  className = '',
-  aspectRatio = 'aspect-[4/3]',
-  zoomOnHover = true,
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  aspectRatio?: string;
-  zoomOnHover?: boolean;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.96 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative overflow-hidden rounded-2xl bg-[#EBE9E1] ${aspectRatio} ${className} group`}
-    >
-      <motion.img
-        src={src}
-        alt={alt}
-        className={`w-full h-full object-cover transition-transform duration-700 ease-out ${
-          zoomOnHover ? 'group-hover:scale-105' : ''
-        }`}
-      />
     </motion.div>
   );
 }

@@ -28,6 +28,7 @@ import {
   Wifi,
   Sparkle,
   ExternalLink,
+  ZoomIn,
 } from 'lucide-react';
 import {
   WorkspaceTypeData,
@@ -51,6 +52,7 @@ import {
   StaggerItem,
 } from '@/components/motion/MotionWrapper';
 import { FounderVideoShowcase } from '@/components/home/FounderVideoShowcase';
+import { ImageLightboxModal, LightboxImage } from '@/components/ui/ImageLightboxModal';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface HomeClientProps {
@@ -79,6 +81,10 @@ export function HomeClient({
   );
   const [openFaqId, setOpenFaqId] = useState<string | null>(faqs[0]?.id || 'faq-1');
 
+  // Lightbox State
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   const selectedWorkspace =
     workspaces.find((w) => w.slug === activeSpaceTab) || workspaces[0];
 
@@ -94,21 +100,21 @@ export function HomeClient({
     'SECTOR 32 INSTITUTIONAL DESK',
   ];
 
-  const centerPhotos = [
+  const centerPhotos: LightboxImage[] = [
     {
       src: '/images/center/executive-cabin-acoustic.jpg',
       title: 'Acoustic Wood-Slat Executive Cabin',
-      desc: 'Sound-isolated private office with custom wood slating & modern ambient lighting',
+      desc: 'Sound-isolated private office with custom wood slating & modern ambient lighting in Sector 45 Gurgaon',
     },
     {
       src: '/images/center/entrance-biometric.jpg',
       title: 'RFID Biometric Glass Entrance',
-      desc: '24/7 keyless secure smart card & biometric entry to workspaces',
+      desc: '24/7 keyless secure smart card & biometric entry corridor to Yoffices workspaces',
     },
     {
       src: '/images/center/meeting-cabin.jpg',
       title: 'Circular Ambient LED Discussion Cabin',
-      desc: 'Executive boardroom fitted with writing boards & presentation displays',
+      desc: 'Executive boardroom fitted with presentation display and magnetic whiteboard',
     },
     {
       src: '/images/center/team-cabin.jpg',
@@ -117,51 +123,64 @@ export function HomeClient({
     },
     {
       src: '/images/center/workspace-layout.jpg',
-      title: 'Collaborative Layout & Desks',
+      title: 'Collaborative Layout & Open Desks',
       desc: 'Integrated open workstations and focus breakout pods',
     },
   ];
 
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
   return (
     <div className="flex flex-col w-full bg-[#F0EFE9] text-[#111111] overflow-hidden">
+      {/* Lightbox Modal */}
+      <ImageLightboxModal
+        images={centerPhotos}
+        initialIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
+
       {/* ========================================================= */}
-      {/* 1. HERO SECTION (Nestor + Socio-Space Framer Aesthetic)   */}
+      {/* 1. HERO SECTION (Compact, Aligned & High-End Framer)      */}
       {/* ========================================================= */}
-      <section className="relative pt-10 pb-16 sm:pt-20 sm:pb-24 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08] overflow-hidden">
-        <div className="max-w-7xl mx-auto space-y-12">
+      <section className="relative pt-6 pb-12 sm:pt-10 sm:pb-16 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08] overflow-hidden">
+        <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
           {/* Top Tag & Monospace Pill */}
-          <FadeUp delay={0.1} className="flex flex-wrap items-center justify-between gap-4">
+          <FadeUp delay={0.05} className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="nestor-pill bg-black/5 border-black/10 text-gray-900 font-mono text-[11px]">
+              <span className="nestor-pill bg-black/5 border-black/10 text-gray-900 font-mono text-[10px] sm:text-[11px]">
                 <span className="w-2 h-2 rounded-full bg-[#C91D24] animate-ping" />
                 [ GURUGRAM • SECTOR 45 & 32 ]
               </span>
-              <span className="hidden sm:inline-flex nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[11px]">
+              <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[10px] sm:text-[11px]">
                 2026 MANAGED SPACES
               </span>
             </div>
 
-            <div className="text-xs font-mono text-gray-500 uppercase tracking-widest flex items-center gap-2">
+            <div className="text-[11px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               GURGAON METRO CORRIDOR
             </div>
           </FadeUp>
 
-          {/* Main Headline & Hero Action */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-            <FadeUp delay={0.2} className="lg:col-span-8 space-y-4">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#111111] leading-[1.05] font-sans">
+          {/* Main Headline & Hero Action in Perfect Alignment */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end">
+            <FadeUp delay={0.1} className="lg:col-span-8 space-y-2.5">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] text-[#111111] leading-[0.98] font-sans">
                 Spaces crafted with intention.
               </h1>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl font-normal leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 max-w-xl font-normal leading-relaxed">
                 Light-filled private cabins, ergonomic workstations, and asset-backed commercial franchise opportunities engineered for ambitious companies.
               </p>
             </FadeUp>
 
-            <FadeUp delay={0.3} className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3.5 justify-end">
+            <FadeUp delay={0.15} className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-2.5 justify-end">
               <Link
                 href="/book-a-visit"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-sm shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Schedule a Walkthrough</span>
@@ -170,7 +189,7 @@ export function HomeClient({
 
               <Link
                 href="/franchise"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#111111] hover:bg-black text-white font-bold text-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl bg-[#111111] hover:bg-black text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
               >
                 <Coins className="w-4 h-4 text-[#C5A880]" />
                 <span>Franchise (₹5,000/mo Yield)</span>
@@ -178,16 +197,24 @@ export function HomeClient({
             </FadeUp>
           </div>
 
-          {/* Large Hero Visual Grid using REAL Office Photos */}
-          <FadeUp delay={0.4} className="grid grid-cols-1 md:grid-cols-12 gap-5 pt-4">
-            <div className="md:col-span-8 relative h-[380px] sm:h-[500px] rounded-3xl overflow-hidden shadow-xl border border-black/5 group">
+          {/* Large Hero Visual Grid using REAL Office Photos with Lightbox Click */}
+          <FadeUp delay={0.2} className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 pt-2">
+            <div
+              onClick={() => openLightbox(0)}
+              className="md:col-span-8 relative h-[360px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-black/5 group cursor-pointer"
+            >
               <img
                 src="/images/center/executive-cabin-acoustic.jpg"
                 alt="Yoffices Executive Cabins Sector 45 Gurgaon"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
               
+              {/* Zoom hint button */}
+              <div className="absolute top-4 right-4 p-2 rounded-full bg-black/40 text-white/90 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-4 h-4" />
+              </div>
+
               <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-white">
                 <div className="space-y-1">
                   <span className="nestor-pill-dark font-mono text-[10px]">
@@ -200,30 +227,35 @@ export function HomeClient({
                     Turnkey enterprise seating with dedicated 1Gbps redundant fiber lines and 100% DG power backup.
                   </p>
                 </div>
-                <Link
-                  href="/workspaces/private-office"
-                  className="w-12 h-12 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center backdrop-blur-md transition-all shrink-0"
+                <div
+                  className="w-11 h-11 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center backdrop-blur-md transition-all shrink-0"
                 >
                   <ArrowRight className="w-5 h-5 -rotate-45" />
-                </Link>
+                </div>
               </div>
             </div>
 
-            <div className="md:col-span-4 flex flex-col gap-5">
-              <div className="relative h-[235px] rounded-3xl overflow-hidden shadow-lg border border-black/5 group">
+            <div className="md:col-span-4 flex flex-col gap-4 sm:gap-5">
+              <div
+                onClick={() => openLightbox(4)}
+                className="relative h-[215px] rounded-3xl overflow-hidden shadow-lg border border-black/5 group cursor-pointer"
+              >
                 <img
                   src="/images/center/workspace-layout.jpg"
                   alt="Workstations Sector 45 Actual Photo"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white/90 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ZoomIn className="w-3.5 h-3.5" />
+                </div>
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <div className="text-sm font-bold">Dedicated Workstations</div>
                   <div className="text-xs text-[#C5A880] font-mono">From ₹5,500 / seat</div>
                 </div>
               </div>
 
-              <div className="relative h-[245px] rounded-3xl bg-[#111111] text-white p-6 flex flex-col justify-between border border-black/10 shadow-lg">
+              <div className="relative h-[225px] rounded-3xl bg-[#111111] text-white p-6 flex flex-col justify-between border border-black/10 shadow-lg">
                 <div className="flex items-center justify-between">
                   <span className="nestor-pill-dark font-mono text-[10px]">
                     FRANCHISE CASH FLOW
@@ -231,7 +263,7 @@ export function HomeClient({
                   <Coins className="w-5 h-5 text-[#C5A880]" />
                 </div>
                 <div>
-                  <div className="text-3xl font-black font-sans text-white">
+                  <div className="text-3xl font-black font-sans text-white tracking-tight">
                     ₹5,000<span className="text-xs text-gray-400 font-normal"> / mo</span>
                   </div>
                   <p className="text-xs text-gray-400 mt-1">
@@ -267,7 +299,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 3. WORKSPACES SHOWCASE (Tabbed Dynamic Slider)            */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -295,12 +327,12 @@ export function HomeClient({
           </div>
 
           {/* Interactive Tab Switcher */}
-          <FadeUp delay={0.2} className="flex flex-wrap gap-2 border-b border-black/10 pb-4">
+          <FadeUp delay={0.15} className="flex flex-wrap gap-2 border-b border-black/10 pb-4">
             {workspaces.map((ws) => (
               <button
                 key={ws.id}
                 onClick={() => setActiveSpaceTab(ws.slug)}
-                className={`px-5 py-2.5 rounded-xl font-bold text-xs transition-all duration-200 ${
+                className={`px-5 py-2.5 rounded-xl font-bold text-xs transition-all duration-200 cursor-pointer ${
                   activeSpaceTab === ws.slug
                     ? 'bg-[#111111] text-white shadow-md'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-black/5'
@@ -313,14 +345,14 @@ export function HomeClient({
 
           {/* Active Workspace Feature Card */}
           {selectedWorkspace && (
-            <FadeUp delay={0.3}>
+            <FadeUp delay={0.2}>
               <div className="nestor-card p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-6 space-y-6">
                   <div className="space-y-2">
                     <span className="text-[10px] font-mono uppercase font-bold text-gray-400">
                       SELECTED SOLUTION
                     </span>
-                    <h3 className="text-2xl sm:text-4xl font-black text-gray-900 font-sans">
+                    <h3 className="text-2xl sm:text-4xl font-black text-gray-900 font-sans tracking-tight">
                       {selectedWorkspace.name}
                     </h3>
                     <p className="text-sm text-gray-600 leading-relaxed">
@@ -330,7 +362,7 @@ export function HomeClient({
 
                   <div className="p-4 rounded-2xl bg-[#F0EFE9] border border-black/5 space-y-2">
                     <div className="text-xs text-gray-500 font-mono">STARTING RATE</div>
-                    <div className="text-2xl sm:text-3xl font-black text-[#C91D24] font-sans">
+                    <div className="text-2xl sm:text-3xl font-black text-[#C91D24] font-sans tracking-tight">
                       {selectedWorkspace.startingPrice}{' '}
                       <span className="text-xs font-normal text-gray-600 font-sans">
                         /{selectedWorkspace.priceUnit}
@@ -368,7 +400,10 @@ export function HomeClient({
                   </div>
                 </div>
 
-                <div className="lg:col-span-6 relative h-[320px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border border-black/5 group">
+                <div
+                  onClick={() => openLightbox(0)}
+                  className="lg:col-span-6 relative h-[320px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border border-black/5 group cursor-pointer"
+                >
                   <img
                     src={selectedWorkspace.gallery?.[0] || selectedWorkspace.heroImage}
                     alt={selectedWorkspace.name}
@@ -376,6 +411,9 @@ export function HomeClient({
                   />
                   <div className="absolute top-4 right-4 bg-black/80 text-white font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full backdrop-blur-md">
                     SECTOR 45 & 32 GURUGRAM
+                  </div>
+                  <div className="absolute bottom-4 right-4 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ZoomIn className="w-4 h-4" />
                   </div>
                 </div>
               </div>
@@ -387,7 +425,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 4. THREE SPECIALIZED VALUE PROPOSITIONS BENTO              */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <FadeUp className="text-center max-w-2xl mx-auto space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
@@ -403,7 +441,7 @@ export function HomeClient({
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Virtual Office Card */}
-            <FadeUp delay={0.1} className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <FadeUp delay={0.1} className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-md hover:shadow-xl">
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-red-50 text-[#C91D24] flex items-center justify-center font-bold">
                   <FileCheck className="w-6 h-6" />
@@ -435,7 +473,7 @@ export function HomeClient({
             </FadeUp>
 
             {/* Shared Employee Card */}
-            <FadeUp delay={0.2} className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <FadeUp delay={0.15} className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-md hover:shadow-xl">
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
                   <UserCheck className="w-6 h-6" />
@@ -467,7 +505,7 @@ export function HomeClient({
             </FadeUp>
 
             {/* Work + Stay Hub Card */}
-            <FadeUp delay={0.3} className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <FadeUp delay={0.2} className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-md hover:shadow-xl">
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
                   <Building2 className="w-6 h-6" />
@@ -509,7 +547,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 6. COMMERCIAL FRANCHISE PLATFORM & LIVE CALCULATOR        */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeUp className="space-y-2">
@@ -535,7 +573,7 @@ export function HomeClient({
           </div>
 
           {/* Interactive Calculator */}
-          <FadeUp delay={0.2}>
+          <FadeUp delay={0.15}>
             <FranchiseCalculator models={franchiseModels} showApplyButton={true} />
           </FadeUp>
         </div>
@@ -544,7 +582,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 7. REAL CENTER PHOTO GALLERY & PHYSICAL SPACES SHOWCASE   */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeUp className="space-y-2">
@@ -555,7 +593,7 @@ export function HomeClient({
                 Inside Our Operational Spaces
               </h2>
               <p className="text-sm sm:text-base text-gray-600 max-w-xl">
-                Unretouched actual photographs of our executive cabins, biometric glass access corridors, and team collaboration rooms.
+                Click on any photo below to open the interactive high-resolution gallery viewer.
               </p>
             </FadeUp>
 
@@ -570,16 +608,19 @@ export function HomeClient({
             </FadeUp>
           </div>
 
-          {/* Bento Photo Grid */}
+          {/* Bento Photo Grid with Lightbox Triggers */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Large Feature Photo 1: Executive Cabin */}
-            <FadeUp delay={0.1} className="md:col-span-8 relative h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+            <FadeUp delay={0.05} className="md:col-span-8 relative h-[360px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(0)}>
               <img
                 src={centerPhotos[0].src}
                 alt={centerPhotos[0].title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-4 right-4 p-2 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-4 h-4" />
+              </div>
               <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
                 <span className="nestor-pill-dark font-mono text-[9px] uppercase font-bold">
                   FLAGSHIP SUITE
@@ -590,13 +631,16 @@ export function HomeClient({
             </FadeUp>
 
             {/* Photo 2: Biometric Entrance */}
-            <FadeUp delay={0.2} className="md:col-span-4 relative h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+            <FadeUp delay={0.1} className="md:col-span-4 relative h-[360px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(1)}>
               <img
                 src={centerPhotos[1].src}
                 alt={centerPhotos[1].title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-4 right-4 p-2 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-4 h-4" />
+              </div>
               <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
                 <span className="nestor-pill-dark font-mono text-[9px] uppercase font-bold">
                   SMART SECURITY
@@ -607,13 +651,16 @@ export function HomeClient({
             </FadeUp>
 
             {/* Photo 3: Meeting Cabin */}
-            <FadeUp delay={0.3} className="md:col-span-4 relative h-[300px] sm:h-[360px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+            <FadeUp delay={0.15} className="md:col-span-4 relative h-[280px] sm:h-[340px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(2)}>
               <img
                 src={centerPhotos[2].src}
                 alt={centerPhotos[2].title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-3.5 h-3.5" />
+              </div>
               <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
                 <h4 className="text-base font-bold font-sans">{centerPhotos[2].title}</h4>
                 <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[2].desc}</p>
@@ -621,13 +668,16 @@ export function HomeClient({
             </FadeUp>
 
             {/* Photo 4: Team Cabin */}
-            <FadeUp delay={0.4} className="md:col-span-4 relative h-[300px] sm:h-[360px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+            <FadeUp delay={0.2} className="md:col-span-4 relative h-[280px] sm:h-[340px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(3)}>
               <img
                 src={centerPhotos[3].src}
                 alt={centerPhotos[3].title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-3.5 h-3.5" />
+              </div>
               <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
                 <h4 className="text-base font-bold font-sans">{centerPhotos[3].title}</h4>
                 <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[3].desc}</p>
@@ -635,13 +685,16 @@ export function HomeClient({
             </FadeUp>
 
             {/* Photo 5: Workspace Layout */}
-            <FadeUp delay={0.5} className="md:col-span-4 relative h-[300px] sm:h-[360px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+            <FadeUp delay={0.25} className="md:col-span-4 relative h-[280px] sm:h-[340px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(4)}>
               <img
                 src={centerPhotos[4].src}
                 alt={centerPhotos[4].title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-3.5 h-3.5" />
+              </div>
               <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
                 <h4 className="text-base font-bold font-sans">{centerPhotos[4].title}</h4>
                 <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[4].desc}</p>
@@ -654,7 +707,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 8. GURUGRAM CENTERS & LOCATIONS SPOTLIGHT                 */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <FadeUp className="space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
@@ -672,11 +725,14 @@ export function HomeClient({
             {locations.map((loc, idx) => (
               <FadeUp
                 key={loc.id}
-                delay={idx * 0.15}
-                className="nestor-card overflow-hidden flex flex-col justify-between shadow-lg"
+                delay={idx * 0.1}
+                className="nestor-card overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-2xl"
               >
                 <div>
-                  <div className="relative h-64 w-full bg-gray-900 overflow-hidden group">
+                  <div
+                    onClick={() => openLightbox(idx === 0 ? 0 : 2)}
+                    className="relative h-64 w-full bg-gray-900 overflow-hidden group cursor-pointer"
+                  >
                     <img
                       src={loc.photos[0]}
                       alt={loc.name}
@@ -685,6 +741,9 @@ export function HomeClient({
                     <div className="absolute top-4 left-4 bg-black/80 text-white font-mono text-[10px] uppercase font-bold px-3 py-1 rounded-full backdrop-blur-md">
                       {loc.status}
                     </div>
+                    <div className="absolute top-4 right-4 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ZoomIn className="w-4 h-4" />
+                    </div>
                   </div>
 
                   <div className="p-6 sm:p-8 space-y-4">
@@ -692,7 +751,7 @@ export function HomeClient({
                       <span className="text-[10px] font-mono uppercase font-bold text-[#C91D24]">
                         {loc.area}
                       </span>
-                      <h3 className="text-2xl font-black text-gray-900 font-sans">{loc.name}</h3>
+                      <h3 className="text-2xl font-black text-gray-900 font-sans tracking-tight">{loc.name}</h3>
                     </div>
 
                     <div className="space-y-2 text-xs text-gray-700 border-t border-gray-100 pt-3">
@@ -755,7 +814,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 9. REAL GOOGLE REVIEWS & SOCIAL PROOF                     */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           {/* Header with Google Business Profile Rating Badge */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -782,7 +841,7 @@ export function HomeClient({
                 href="https://maps.app.goo.gl/LdkCuzynh8p4RRPZ8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-[#F0EFE9] hover:bg-[#E5E3DB] border border-black/10 text-gray-900 font-bold text-xs shadow-sm transition-all"
+                className="inline-flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-white hover:bg-gray-50 border border-black/10 text-gray-900 font-bold text-xs shadow-sm hover:shadow-md transition-all"
               >
                 <div className="flex items-center gap-1 text-amber-500">
                   {[...Array(5)].map((_, i) => (
@@ -804,7 +863,7 @@ export function HomeClient({
             {testimonials.map((test, idx) => (
               <FadeUp
                 key={test.id}
-                delay={idx * 0.1}
+                delay={idx * 0.08}
                 className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-md hover:shadow-xl transition-all"
               >
                 <div className="space-y-4">
@@ -862,7 +921,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 10. FAQS ACCORDION                                        */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <div className="max-w-4xl mx-auto space-y-12">
           <FadeUp className="text-center space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
@@ -883,7 +942,7 @@ export function HomeClient({
                 >
                   <button
                     onClick={() => setOpenFaqId(isOpen ? null : faq.id)}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-gray-900"
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-gray-900 cursor-pointer"
                   >
                     <span>{faq.question}</span>
                     <span
@@ -918,7 +977,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 11. EDITORIAL INSIGHTS & BLOG HIGHLIGHTS                  */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeUp className="space-y-2">
@@ -945,8 +1004,8 @@ export function HomeClient({
             {blogPosts.slice(0, 2).map((post, idx) => (
               <FadeUp
                 key={post.id}
-                delay={idx * 0.15}
-                className="nestor-card overflow-hidden flex flex-col justify-between group"
+                delay={idx * 0.1}
+                className="nestor-card overflow-hidden flex flex-col justify-between group shadow-md hover:shadow-xl"
               >
                 <div>
                   <div className="relative h-60 w-full bg-gray-200 overflow-hidden">
@@ -976,7 +1035,7 @@ export function HomeClient({
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-gray-900 font-sans group-hover:text-[#C91D24] transition-colors leading-snug">
+                    <h3 className="text-xl font-bold text-gray-900 font-sans group-hover:text-[#C91D24] transition-colors leading-snug tracking-tight">
                       {post.title}
                     </h3>
 
@@ -1004,7 +1063,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 12. LEAD INQUIRY & CONTACT FORM SECTION                  */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9]">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9]">
         <div className="max-w-4xl mx-auto space-y-8">
           <FadeUp className="text-center space-y-2">
             <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[11px]">
@@ -1018,7 +1077,7 @@ export function HomeClient({
             </p>
           </FadeUp>
 
-          <FadeUp delay={0.2}>
+          <FadeUp delay={0.15}>
             <LeadForm
               defaultService="Private Office"
               title="Get Customized Proposal & Pricing"
