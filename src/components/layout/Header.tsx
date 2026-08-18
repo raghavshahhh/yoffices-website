@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -17,6 +17,8 @@ import {
   ArrowUpRight,
   TrendingUp,
   Coins,
+  ChevronRight,
+  ExternalLink,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -25,6 +27,10 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileExpandedSection, setMobileExpandedSection] = useState<string | null>('workspaces');
+  
+  const navContainerRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,11 +40,47 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
+  // Close dropdown and mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setActiveDropdown(null);
   }, [pathname]);
+
+  // Click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        navContainerRef.current &&
+        !navContainerRef.current.contains(event.target as Node)
+      ) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleMouseEnter = (menu: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDropdown(menu);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  };
+
+  const toggleDropdown = (menu: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDropdown((prev) => (prev === menu ? null : menu));
+  };
 
   const workspacesMenu = [
     {
@@ -107,7 +149,7 @@ export function Header() {
       className={cn(
         'sticky top-0 z-40 w-full transition-all duration-300',
         isScrolled
-          ? 'bg-[#F0EFE9]/90 backdrop-blur-md border-b border-black/[0.08] py-3 shadow-sm'
+          ? 'bg-[#F0EFE9]/95 backdrop-blur-md border-b border-black/[0.08] py-3 shadow-xs'
           : 'bg-[#F0EFE9] border-b border-black/[0.06] py-4'
       )}
     >
@@ -115,7 +157,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-[#111111] flex items-center justify-center text-white font-bold text-lg tracking-wider group-hover:bg-[#C91D24] transition-colors shadow-sm">
+            <div className="w-9 h-9 rounded-xl bg-[#111111] flex items-center justify-center text-white font-bold text-lg tracking-wider group-hover:bg-[#C91D24] transition-colors shadow-xs">
               <span className="text-[#C91D24] group-hover:text-white transition-colors">Y</span>
             </div>
             <div className="flex flex-col">
@@ -129,61 +171,80 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation (Nestor Pill Buttons) */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 bg-white/70 backdrop-blur-md p-1.5 rounded-full border border-black/[0.06] shadow-sm">
+          <nav
+            ref={navContainerRef}
+            className="hidden lg:flex items-center gap-1 xl:gap-1.5 bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-black/[0.06] shadow-xs relative"
+          >
             {/* Workspaces Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown('workspaces')}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => handleMouseEnter('workspaces')}
+              onMouseLeave={handleMouseLeave}
             >
               <button
+                type="button"
+                onClick={() => toggleDropdown('workspaces')}
                 className={cn(
-                  'flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full transition-all cursor-pointer',
-                  isNavActive('/workspaces')
-                    ? 'text-white bg-[#111111] shadow-sm'
-                    : 'text-gray-700 hover:text-black hover:bg-white'
+                  'flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full transition-all cursor-pointer select-none',
+                  activeDropdown === 'workspaces' || isNavActive('/workspaces')
+                    ? 'text-white bg-[#111111] shadow-xs'
+                    : 'text-gray-700 hover:text-black hover:bg-gray-100'
                 )}
               >
                 <span>Workspaces</span>
-                <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+                <ChevronDown
+                  className={cn(
+                    'w-3.5 h-3.5 transition-transform duration-200 opacity-70',
+                    activeDropdown === 'workspaces' ? 'rotate-180 text-white' : ''
+                  )}
+                />
               </button>
 
+              {/* Dropdown Menu Container with zero-gap hover bridge */}
               {activeDropdown === 'workspaces' && (
-                <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-black/10 p-3 animate-fade-in">
-                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-400 px-3 py-1 mb-1">
-                    [ WORKSPACE TYPES ]
-                  </div>
-                  {workspacesMenu.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#F0EFE9] transition-colors group"
-                    >
-                      <div className="p-2 rounded-lg bg-gray-100 text-gray-700 group-hover:bg-[#C91D24] group-hover:text-white transition-colors">
-                        <item.icon className="w-4 h-4" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-xs font-bold text-gray-900 group-hover:text-[#C91D24] transition-colors">
-                            {item.title}
-                          </span>
-                          {item.tag && (
-                            <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-red-100 text-[#C91D24]">
-                              {item.tag}
-                            </span>
-                          )}
+                <div
+                  className="absolute top-full left-0 pt-2 w-80 z-50"
+                  onMouseEnter={() => handleMouseEnter('workspaces')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-white rounded-2xl shadow-2xl border border-black/10 p-3 space-y-1 animate-fade-in">
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-400 px-3 py-1 mb-1">
+                      [ WORKSPACE TYPES ]
+                    </div>
+                    {workspacesMenu.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setActiveDropdown(null)}
+                        className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#F0EFE9] transition-colors group"
+                      >
+                        <div className="p-2 rounded-lg bg-gray-100 text-gray-700 group-hover:bg-[#C91D24] group-hover:text-white transition-colors shrink-0">
+                          <item.icon className="w-4 h-4" />
                         </div>
-                        <p className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{item.desc}</p>
-                      </div>
-                    </Link>
-                  ))}
-                  <div className="mt-2 pt-2 border-t border-gray-100 px-3">
-                    <Link
-                      href="/workspaces"
-                      className="text-xs font-bold text-[#C91D24] hover:underline inline-flex items-center gap-1"
-                    >
-                      View All Workspaces <ArrowUpRight className="w-3 h-3" />
-                    </Link>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-xs font-bold text-gray-900 group-hover:text-[#C91D24] transition-colors">
+                              {item.title}
+                            </span>
+                            {item.tag && (
+                              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-red-100 text-[#C91D24]">
+                                {item.tag}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{item.desc}</p>
+                        </div>
+                      </Link>
+                    ))}
+                    <div className="mt-2 pt-2 border-t border-gray-100 px-3">
+                      <Link
+                        href="/workspaces"
+                        onClick={() => setActiveDropdown(null)}
+                        className="text-xs font-bold text-[#C91D24] hover:underline inline-flex items-center gap-1"
+                      >
+                        View All Workspaces <ArrowUpRight className="w-3 h-3" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
@@ -192,50 +253,68 @@ export function Header() {
             {/* Solutions Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown('solutions')}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => handleMouseEnter('solutions')}
+              onMouseLeave={handleMouseLeave}
             >
               <button
+                type="button"
+                onClick={() => toggleDropdown('solutions')}
                 className={cn(
-                  'flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full transition-all cursor-pointer',
-                  isNavActive('/virtual-office') || isNavActive('/shared-employee') || isNavActive('/work-stay')
-                    ? 'text-white bg-[#111111] shadow-sm'
-                    : 'text-gray-700 hover:text-black hover:bg-white'
+                  'flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full transition-all cursor-pointer select-none',
+                  activeDropdown === 'solutions' ||
+                    isNavActive('/virtual-office') ||
+                    isNavActive('/shared-employee') ||
+                    isNavActive('/work-stay')
+                    ? 'text-white bg-[#111111] shadow-xs'
+                    : 'text-gray-700 hover:text-black hover:bg-gray-100'
                 )}
               >
                 <span>Solutions</span>
-                <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+                <ChevronDown
+                  className={cn(
+                    'w-3.5 h-3.5 transition-transform duration-200 opacity-70',
+                    activeDropdown === 'solutions' ? 'rotate-180 text-white' : ''
+                  )}
+                />
               </button>
 
+              {/* Dropdown Menu Container with zero-gap hover bridge */}
               {activeDropdown === 'solutions' && (
-                <div className="absolute top-full left-0 mt-2 w-84 bg-white rounded-2xl shadow-2xl border border-black/10 p-3 animate-fade-in">
-                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-400 px-3 py-1 mb-1">
-                    [ ENTERPRISE & LIVING ]
-                  </div>
-                  {solutionsMenu.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#F0EFE9] transition-colors group"
-                    >
-                      <div className="p-2 rounded-lg bg-gray-100 text-gray-700 group-hover:bg-[#C91D24] group-hover:text-white transition-colors">
-                        <item.icon className="w-4 h-4" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-xs font-bold text-gray-900 group-hover:text-[#C91D24] transition-colors">
-                            {item.title}
-                          </span>
-                          {item.tag && (
-                            <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-100 text-amber-800">
-                              {item.tag}
-                            </span>
-                          )}
+                <div
+                  className="absolute top-full left-0 pt-2 w-84 z-50"
+                  onMouseEnter={() => handleMouseEnter('solutions')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-white rounded-2xl shadow-2xl border border-black/10 p-3 space-y-1 animate-fade-in">
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-400 px-3 py-1 mb-1">
+                      [ ENTERPRISE & LIVING ]
+                    </div>
+                    {solutionsMenu.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setActiveDropdown(null)}
+                        className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#F0EFE9] transition-colors group"
+                      >
+                        <div className="p-2 rounded-lg bg-gray-100 text-gray-700 group-hover:bg-[#C91D24] group-hover:text-white transition-colors shrink-0">
+                          <item.icon className="w-4 h-4" />
                         </div>
-                        <p className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{item.desc}</p>
-                      </div>
-                    </Link>
-                  ))}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-xs font-bold text-gray-900 group-hover:text-[#C91D24] transition-colors">
+                              {item.title}
+                            </span>
+                            {item.tag && (
+                              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-100 text-amber-800">
+                                {item.tag}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{item.desc}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -246,8 +325,8 @@ export function Header() {
               className={cn(
                 'px-3 py-1.5 text-xs font-bold rounded-full transition-all',
                 isNavActive('/locations')
-                  ? 'text-white bg-[#111111] shadow-sm'
-                  : 'text-gray-700 hover:text-black hover:bg-white'
+                  ? 'text-white bg-[#111111] shadow-xs'
+                  : 'text-gray-700 hover:text-black hover:bg-gray-100'
               )}
             >
               Locations
@@ -259,8 +338,8 @@ export function Header() {
               className={cn(
                 'px-3 py-1.5 text-xs font-bold rounded-full transition-all flex items-center gap-1.5',
                 isNavActive('/franchise')
-                  ? 'text-white bg-[#111111] shadow-sm'
-                  : 'text-gray-700 hover:text-black hover:bg-white'
+                  ? 'text-white bg-[#111111] shadow-xs'
+                  : 'text-gray-700 hover:text-black hover:bg-gray-100'
               )}
             >
               <span>Franchise</span>
@@ -275,8 +354,8 @@ export function Header() {
               className={cn(
                 'px-3 py-1.5 text-xs font-bold rounded-full transition-all',
                 isNavActive('/media')
-                  ? 'text-white bg-[#111111] shadow-sm'
-                  : 'text-gray-700 hover:text-black hover:bg-white'
+                  ? 'text-white bg-[#111111] shadow-xs'
+                  : 'text-gray-700 hover:text-black hover:bg-gray-100'
               )}
             >
               Media
@@ -288,8 +367,8 @@ export function Header() {
               className={cn(
                 'px-3 py-1.5 text-xs font-bold rounded-full transition-all',
                 isNavActive('/blog')
-                  ? 'text-white bg-[#111111] shadow-sm'
-                  : 'text-gray-700 hover:text-black hover:bg-white'
+                  ? 'text-white bg-[#111111] shadow-xs'
+                  : 'text-gray-700 hover:text-black hover:bg-gray-100'
               )}
             >
               Blog
@@ -301,8 +380,8 @@ export function Header() {
               className={cn(
                 'px-3 py-1.5 text-xs font-bold rounded-full transition-all',
                 isNavActive('/about')
-                  ? 'text-white bg-[#111111] shadow-sm'
-                  : 'text-gray-700 hover:text-black hover:bg-white'
+                  ? 'text-white bg-[#111111] shadow-xs'
+                  : 'text-gray-700 hover:text-black hover:bg-gray-100'
               )}
             >
               About
@@ -313,7 +392,7 @@ export function Header() {
           <div className="hidden sm:flex items-center gap-2.5">
             <Link
               href="/franchise/apply"
-              className="hidden xl:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-gray-800 bg-white/80 hover:bg-white rounded-full transition-all border border-black/10 shadow-sm"
+              className="hidden xl:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-gray-800 bg-white hover:bg-gray-100 rounded-full transition-all border border-black/10 shadow-xs"
             >
               <Coins className="w-3.5 h-3.5 text-[#C91D24]" />
               <span>Franchise Desk</span>
@@ -332,7 +411,7 @@ export function Header() {
           <div className="flex items-center gap-2 lg:hidden">
             <Link
               href="/book-a-visit"
-              className="px-3.5 py-1.5 text-xs font-bold text-white bg-[#C91D24] rounded-full"
+              className="px-3.5 py-1.5 text-xs font-bold text-white bg-[#C91D24] rounded-full shadow-xs"
             >
               Book Tour
             </Link>
@@ -351,85 +430,153 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-[73px] bottom-0 bg-[#F0EFE9] z-50 overflow-y-auto border-t border-black/10 p-5 animate-fade-in pb-24">
           <div className="space-y-6">
-            <div>
-              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-400 mb-2">
-                [ WORKSPACES ]
-              </div>
-              <div className="grid grid-cols-1 gap-2">
-                {workspacesMenu.map((item) => (
+            {/* Workspaces Accordion */}
+            <div className="bg-white rounded-2xl p-4 border border-black/5 shadow-xs space-y-3">
+              <button
+                type="button"
+                onClick={() =>
+                  setMobileExpandedSection(
+                    mobileExpandedSection === 'workspaces' ? null : 'workspaces'
+                  )
+                }
+                className="w-full flex items-center justify-between font-bold text-xs text-gray-900"
+              >
+                <span className="font-mono text-[10px] text-gray-500">[ WORKSPACES ]</span>
+                <ChevronDown
+                  className={cn(
+                    'w-4 h-4 transition-transform',
+                    mobileExpandedSection === 'workspaces' ? 'rotate-180 text-[#C91D24]' : ''
+                  )}
+                />
+              </button>
+
+              {mobileExpandedSection === 'workspaces' && (
+                <div className="grid grid-cols-1 gap-2 pt-2 border-t border-gray-100">
+                  {workspacesMenu.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F0EFE9] transition-colors"
+                    >
+                      <item.icon className="w-4 h-4 text-[#C91D24] shrink-0" />
+                      <div className="flex-1 flex items-center justify-between">
+                        <span className="text-xs font-bold text-gray-900">{item.title}</span>
+                        {item.tag && (
+                          <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-red-100 text-[#C91D24]">
+                            {item.tag}
+                          </span>
+                        )}
+                      </div>
+                    </Link>
+                  ))}
                   <Link
-                    key={item.href}
-                    href={item.href}
-                    className="flex items-center gap-3 p-3 rounded-2xl bg-white border border-black/5"
+                    href="/workspaces"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-xs font-bold text-[#C91D24] p-2 hover:underline inline-flex items-center gap-1"
                   >
-                    <item.icon className="w-4 h-4 text-[#C91D24]" />
-                    <span className="text-xs font-bold text-gray-900">{item.title}</span>
+                    View All Workspaces →
                   </Link>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
 
-            <div>
-              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-400 mb-2">
-                [ BUSINESS SOLUTIONS ]
-              </div>
-              <div className="grid grid-cols-1 gap-2">
-                {solutionsMenu.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="flex items-center gap-3 p-3 rounded-2xl bg-white border border-black/5"
-                  >
-                    <item.icon className="w-4 h-4 text-[#C91D24]" />
-                    <span className="text-xs font-bold text-gray-900">{item.title}</span>
-                  </Link>
-                ))}
-              </div>
+            {/* Solutions Accordion */}
+            <div className="bg-white rounded-2xl p-4 border border-black/5 shadow-xs space-y-3">
+              <button
+                type="button"
+                onClick={() =>
+                  setMobileExpandedSection(
+                    mobileExpandedSection === 'solutions' ? null : 'solutions'
+                  )
+                }
+                className="w-full flex items-center justify-between font-bold text-xs text-gray-900"
+              >
+                <span className="font-mono text-[10px] text-gray-500">[ BUSINESS SOLUTIONS ]</span>
+                <ChevronDown
+                  className={cn(
+                    'w-4 h-4 transition-transform',
+                    mobileExpandedSection === 'solutions' ? 'rotate-180 text-[#C91D24]' : ''
+                  )}
+                />
+              </button>
+
+              {mobileExpandedSection === 'solutions' && (
+                <div className="grid grid-cols-1 gap-2 pt-2 border-t border-gray-100">
+                  {solutionsMenu.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F0EFE9] transition-colors"
+                    >
+                      <item.icon className="w-4 h-4 text-[#C91D24] shrink-0" />
+                      <div className="flex-1 flex items-center justify-between">
+                        <span className="text-xs font-bold text-gray-900">{item.title}</span>
+                        {item.tag && (
+                          <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-100 text-amber-800">
+                            {item.tag}
+                          </span>
+                        )}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div className="pt-2 border-t border-black/10 grid grid-cols-2 gap-2">
+            {/* Direct Links Grid */}
+            <div className="grid grid-cols-2 gap-2">
               <Link
                 href="/locations"
-                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5 shadow-xs"
               >
                 Locations
               </Link>
               <Link
                 href="/franchise"
-                className="p-3 rounded-2xl bg-red-50 text-xs font-bold text-[#C91D24] text-center border border-red-100"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-3 rounded-2xl bg-red-50 text-xs font-bold text-[#C91D24] text-center border border-red-100 shadow-xs"
               >
                 Franchise (₹5L+)
               </Link>
               <Link
                 href="/media"
-                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5 shadow-xs"
               >
                 Media & Videos
               </Link>
               <Link
                 href="/blog"
-                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5 shadow-xs"
               >
                 Editorial Blog
               </Link>
               <Link
                 href="/about"
-                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5 shadow-xs"
               >
                 About Us
               </Link>
               <Link
                 href="/contact"
-                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-3 rounded-2xl bg-white text-xs font-bold text-gray-800 text-center border border-black/5 shadow-xs"
               >
                 Contact Desk
               </Link>
             </div>
 
-            <div className="pt-4 border-t border-black/10 space-y-2">
+            {/* CTA */}
+            <div className="pt-2">
               <Link
                 href="/book-a-visit"
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-full bg-[#C91D24] text-white font-bold text-xs shadow-md"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-full bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs shadow-md transition-colors"
               >
                 Schedule Guided Walkthrough
               </Link>
