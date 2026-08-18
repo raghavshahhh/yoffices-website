@@ -233,12 +233,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/locations/sector-45-gurgaon" className="hover:text-white transition-colors">
+                <Link href="/locations/gurgaon-sector-45" className="hover:text-white transition-colors">
                   Sector 45 Flagship
                 </Link>
               </li>
               <li>
-                <Link href="/locations/sector-32-gurgaon" className="hover:text-white transition-colors">
+                <Link href="/locations/gurgaon-sector-32-institutional" className="hover:text-white transition-colors">
                   Sector 32 Corporate Desk
                 </Link>
               </li>

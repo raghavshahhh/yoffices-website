@@ -350,7 +350,19 @@ export const db = {
   // Locations
   getLocations: () => readDb().locations.filter((l) => l.published),
   getAllLocations: () => readDb().locations,
-  getLocationBySlug: (slug: string) => readDb().locations.find((l) => l.slug === slug) || null,
+  getLocationBySlug: (slug: string) => {
+    const list = readDb().locations;
+    return (
+      list.find(
+        (l) =>
+          l.slug === slug ||
+          l.id === slug ||
+          l.slug.replace('gurgaon-', '') === slug.replace('gurgaon-', '') ||
+          slug.includes('45') && l.slug.includes('45') ||
+          slug.includes('32') && l.slug.includes('32')
+      ) || null
+    );
+  },
   saveLocation: (location: LocationData) => {
     const database = readDb();
     const index = database.locations.findIndex((l) => l.id === location.id || l.slug === location.slug);
@@ -372,7 +384,10 @@ export const db = {
   // Workspaces
   getWorkspaces: () => readDb().workspaces.filter((w) => w.published),
   getAllWorkspaces: () => readDb().workspaces,
-  getWorkspaceBySlug: (slug: string) => readDb().workspaces.find((w) => w.slug === slug) || null,
+  getWorkspaceBySlug: (slug: string) => {
+    const list = readDb().workspaces;
+    return list.find((w) => w.slug === slug || w.id === slug || w.slug.replace(/-/g, '') === slug.replace(/-/g, '')) || null;
+  },
   saveWorkspace: (ws: WorkspaceTypeData) => {
     const database = readDb();
     const index = database.workspaces.findIndex((w) => w.id === ws.id || w.slug === ws.slug);
