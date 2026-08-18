@@ -29,6 +29,7 @@ import {
   Sparkle,
   ExternalLink,
   ZoomIn,
+  PenLine,
 } from 'lucide-react';
 import {
   WorkspaceTypeData,
@@ -53,6 +54,7 @@ import {
 } from '@/components/motion/MotionWrapper';
 import { FounderVideoShowcase } from '@/components/home/FounderVideoShowcase';
 import { ImageLightboxModal, LightboxImage } from '@/components/ui/ImageLightboxModal';
+import { WriteReviewModal } from '@/components/testimonials/WriteReviewModal';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface HomeClientProps {
@@ -84,6 +86,9 @@ export function HomeClient({
   // Lightbox State
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Write Review Modal State
+  const [isWriteReviewOpen, setIsWriteReviewOpen] = useState(false);
 
   const selectedWorkspace =
     workspaces.find((w) => w.slug === activeSpaceTab) || workspaces[0];
@@ -166,6 +171,12 @@ export function HomeClient({
         initialIndex={lightboxIndex}
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
+      />
+
+      {/* Write Review Modal */}
+      <WriteReviewModal
+        isOpen={isWriteReviewOpen}
+        onClose={() => setIsWriteReviewOpen(false)}
       />
 
       {/* ========================================================= */}
@@ -969,8 +980,9 @@ export function HomeClient({
             </FadeUp>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((test, idx) => {
+          {/* Top 3 Featured Reviews Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.slice(0, 3).map((test, idx) => {
               const avatarColors: Record<string, string> = {
                 'FUTURE MONEY': 'bg-[#5E35B1]',
                 'Kavita Singh': 'bg-[#D81B60]',
@@ -1083,16 +1095,33 @@ export function HomeClient({
             })}
           </div>
 
-          {/* Link to Google Business Profile */}
-          <FadeUp delay={0.2} className="text-center pt-2">
+          {/* Action Row: More Reviews & Write a Review */}
+          <FadeUp delay={0.2} className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
+            <Link
+              href="/testimonials"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#111111] hover:bg-black text-white font-bold text-xs shadow-md transition-all hover:scale-105 active:scale-95"
+            >
+              <span>View All 10+ Member Reviews</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setIsWriteReviewOpen(true)}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <PenLine className="w-3.5 h-3.5" />
+              <span>Write a Review</span>
+            </button>
+
             <a
               href="https://maps.app.goo.gl/LdkCuzynh8p4RRPZ8"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#C91D24] hover:underline"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-white hover:bg-gray-100 border border-black/10 text-gray-800 font-bold text-xs shadow-2xs transition-all"
             >
-              <span>View All 120+ Reviews on Google Business Profile</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Google Maps Profile</span>
+              <ExternalLink className="w-3.5 h-3.5 text-gray-400" />
             </a>
           </FadeUp>
         </div>

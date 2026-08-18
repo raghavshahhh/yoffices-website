@@ -472,11 +472,23 @@ export const db = {
   // Testimonials
   getTestimonials: () => readDb().testimonials.filter((t) => t.published),
   getAllTestimonials: () => readDb().testimonials,
+  addTestimonial: (testimonial: TestimonialData) => {
+    const database = readDb();
+    database.testimonials.unshift(testimonial);
+    writeDb(database);
+    return testimonial;
+  },
   saveTestimonials: (testimonials: TestimonialData[]) => {
     const database = readDb();
     database.testimonials = testimonials;
     writeDb(database);
     return testimonials;
+  },
+  deleteTestimonial: (id: string) => {
+    const database = readDb();
+    database.testimonials = database.testimonials.filter((t) => t.id !== id);
+    writeDb(database);
+    return true;
   },
 
   // FAQs

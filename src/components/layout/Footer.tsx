@@ -253,6 +253,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/testimonials" className="text-amber-400 hover:text-amber-300 font-semibold transition-colors flex items-center gap-1">
+                  <span>Member Reviews (4.6★)</span>
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="hover:text-white transition-colors">
                   About Yoffices
                 </Link>
