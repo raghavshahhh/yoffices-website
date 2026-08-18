@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import {
   TrendingUp,
@@ -12,12 +12,17 @@ import {
   Calculator,
   Shield,
   Coins,
+  ChevronDown,
+  ZoomIn,
+  Building2,
+  FileCheck,
 } from 'lucide-react';
 import { FranchiseModelData, FranchiseTermData } from '@/types';
 import { FranchiseCalculator } from '@/components/franchise/FranchiseCalculator';
 import { formatINR } from '@/lib/utils';
 import { FadeUp } from '@/components/motion/MotionWrapper';
 import { Marquee } from '@/components/ui/Marquee';
+import { ImageLightboxModal, LightboxImage } from '@/components/ui/ImageLightboxModal';
 
 interface FranchisePageClientProps {
   models: FranchiseModelData[];
@@ -25,6 +30,28 @@ interface FranchisePageClientProps {
 }
 
 export function FranchisePageClient({ models, terms }: FranchisePageClientProps) {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const franchisePhotos: LightboxImage[] = [
+    {
+      src: '/images/center/executive-cabin-acoustic.jpg',
+      title: 'Commercial Executive Cabin Asset',
+      desc: 'Physical revenue-generating private suite in Sector 45 Gurgaon backing the ₹11L / ₹25L franchise tier.',
+    },
+    {
+      src: '/images/center/director-private-cabin.jpg',
+      title: 'Director Cabin Fit-Out',
+      desc: 'Turnkey fully-furnished executive office cabin with sound-dampened acoustic wall paneling.',
+    },
+    {
+      src: '/images/center/manager-executive-suite.jpg',
+      title: 'Multi-Seat Manager Suite Asset',
+      desc: 'Modern LED tri-spoke lighting and ergonomic high-back mesh seating for high enterprise occupancy.',
+    },
+  ];
+
   const marqueeItems = [
     '₹5,000/MO FRANCHISE DISBURSEMENT',
     '3-YEAR ASSET TENURE (36 MONTHS)',
@@ -32,42 +59,99 @@ export function FranchisePageClient({ models, terms }: FranchisePageClientProps)
     'ZERO OPERATIONAL OPEX OVERHEAD',
     'CONTRACTUAL BUYBACK & CHEQUE RETURN',
     'TURNKEY GURGAON REAL ESTATE',
+    'SECTOR 45 & 32 COMMERCIAL ASSETS',
+  ];
+
+  const securityPillars = [
+    {
+      title: '3 Annual Security Cheques',
+      desc: 'Partner receives 3 annual post-dated principal security cheques at the time of agreement signing as financial security.',
+      badge: 'BANK BACKED',
+    },
+    {
+      title: 'Fixed Monthly Rental Payouts',
+      desc: 'Disbursed directly into your designated bank account every month without waiting for occupancy or operational cycles.',
+      badge: 'MONTHLY CASH FLOW',
+    },
+    {
+      title: 'Zero Opex & Maintenance',
+      desc: 'Yoffices hospitality and facility management bears 100% of electricity, DG fuel, cleaning, and marketing overheads.',
+      badge: 'PASSIVE OWNERSHIP',
+    },
+    {
+      title: 'Contractual Maturity Buyback',
+      desc: 'Upon 36-month tenure completion, return the annual cheque and receive complete principal liquidation as agreed.',
+      badge: '3-YEAR MATURITY',
+    },
+  ];
+
+  const faqs = [
+    {
+      q: 'How does the 3 Post-Dated Security Cheques process work?',
+      a: 'When you execute the franchise agreement, Yoffices issues 3 post-dated bank cheques (one for each 12-month tenure block) securing your principal investment. At the end of each year upon successful rental payouts, the expired cheque is exchanged for the subsequent year’s instrument.',
+    },
+    {
+      q: 'Are monthly rental disbursements guaranteed regardless of occupancy?',
+      a: 'Yes. Yoffices operates on a master franchise operator lease. Your fixed monthly payout is contractually guaranteed by Yoffices commercial management and is not contingent on day-to-day seat occupancy.',
+    },
+    {
+      q: 'Can I visit and inspect the physical commercial asset in Gurgaon?',
+      a: 'Absolutely. We encourage all prospective franchise partners to schedule a VIP walkthrough of our operational centers in Sector 45 and Sector 32 to inspect fit-outs, occupancy, and reception desks.',
+    },
+    {
+      q: 'What is the minimum capital allocation required to start?',
+      a: 'Our Tier 1 Micro Franchise starts at ₹5,00,000 with a ₹5,000/month payout. Higher tiers include the ₹11,00,000 Cabin Model (₹11,000/mo) and ₹25,00,000 Director Suite Model (₹25,000/mo).',
+    },
   ];
 
   return (
     <div className="flex flex-col w-full bg-[#F0EFE9] text-[#111111] overflow-hidden">
+      <ImageLightboxModal
+        images={franchisePhotos}
+        initialIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
+
       {/* Hero Header */}
-      <section className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08]">
+      <section className="relative pt-10 pb-16 sm:pt-16 sm:pb-24 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08]">
         <div className="max-w-5xl mx-auto text-center space-y-6">
-          <FadeUp delay={0.1}>
-            <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[11px]">
-              [ ASSET-BACKED COMMERCIAL REAL ESTATE ]
-            </span>
+          <FadeUp delay={0.05}>
+            <div className="inline-flex items-center gap-2">
+              <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[10px] sm:text-[11px]">
+                [ ASSET-BACKED COMMERCIAL REAL ESTATE ]
+              </span>
+              <span className="nestor-pill bg-emerald-50 text-emerald-700 border-emerald-200 font-mono text-[10px] sm:text-[11px] flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                3 ANNUAL SECURITY CHEQUES
+              </span>
+            </div>
           </FadeUp>
 
-          <FadeUp delay={0.2}>
-            <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-[#111111] font-sans">
+          <FadeUp delay={0.1}>
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-[-0.04em] text-[#111111] font-sans leading-tight">
               Own a Yoffices Commercial Franchise
             </h1>
           </FadeUp>
 
-          <FadeUp delay={0.3}>
+          <FadeUp delay={0.15}>
             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Participate in high-demand Gurgaon commercial assets with structured 3-year monthly rental disbursements, contractual post-dated security cheques, and zero operational hassles.
             </p>
           </FadeUp>
 
-          <FadeUp delay={0.4} className="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <FadeUp delay={0.2} className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <Link
               href="/franchise/apply"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>Apply for Franchise</span>
+              <span>Apply for Franchise Allocation</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
+
             <Link
               href="/franchise/how-it-works"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white/80 hover:bg-white text-gray-900 font-bold text-xs border border-black/10 transition-all"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white hover:bg-gray-50 text-gray-900 font-bold text-xs border border-black/10 transition-all shadow-sm"
             >
               <span>Security Cheques & Process</span>
             </Link>
@@ -85,15 +169,47 @@ export function FranchisePageClient({ models, terms }: FranchisePageClientProps)
         />
       </div>
 
-      {/* 3 Models Grid */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08]">
-        <div className="max-w-7xl mx-auto space-y-16">
+      {/* Security Pillars */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08]">
+        <div className="max-w-7xl mx-auto space-y-12">
           <FadeUp className="text-center max-w-2xl mx-auto space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-800">
-              [ 01 / 03 • ASSET MODELS ]
+              [ 01 / 04 • LEGAL & FINANCIAL SECURITY ]
             </span>
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#111111] font-sans">
-              Three Structured Asset Tiers
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#111111] font-sans">
+              4 Levels of Investor Protection
+            </h2>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {securityPillars.map((p, idx) => (
+              <FadeUp
+                key={idx}
+                delay={idx * 0.06}
+                className="nestor-card p-6 sm:p-7 space-y-3 bg-white shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+              >
+                <div className="space-y-3">
+                  <span className="nestor-pill font-mono text-[9px] uppercase font-bold bg-black/5">
+                    {p.badge}
+                  </span>
+                  <h3 className="text-base font-bold text-gray-900 font-sans leading-snug">{p.title}</h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">{p.desc}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3 Models Grid */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.08]">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <FadeUp className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-800">
+              [ 02 / 04 • STRUCTURED ASSET TIERS ]
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 font-sans">
+              Three Fixed Capital Tiers
             </h2>
             <p className="text-sm text-gray-600">
               Fixed monthly rental disbursements over a 3-year term backed by annual post-dated security cheques.
@@ -106,14 +222,14 @@ export function FranchisePageClient({ models, terms }: FranchisePageClientProps)
               return (
                 <FadeUp
                   key={model.id}
-                  delay={idx * 0.1}
-                  className={`nestor-card p-8 flex flex-col justify-between shadow-xl ${
+                  delay={idx * 0.08}
+                  className={`nestor-card p-7 sm:p-8 flex flex-col justify-between shadow-xl bg-white ${
                     model.isFeatured ? 'border-2 border-[#C91D24] relative' : ''
                   }`}
                 >
                   {model.isFeatured && (
                     <span className="absolute -top-3 right-6 bg-[#C91D24] text-white font-mono text-[10px] font-extrabold uppercase px-3 py-0.5 rounded-full shadow">
-                      HIGHEST DEMAND
+                      HIGHEST DEMAND TIER
                     </span>
                   )}
 
@@ -126,7 +242,7 @@ export function FranchisePageClient({ models, terms }: FranchisePageClientProps)
                       <p className="text-xs text-gray-500 mt-1">{model.subtitle}</p>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#F0EFE9] border border-black/5 space-y-2 text-xs">
+                    <div className="p-4 rounded-2xl bg-[#FAF9F6] border border-black/5 space-y-2 text-xs">
                       <div className="flex items-center justify-between text-gray-600">
                         <span>Principal Allocation:</span>
                         <strong className="text-gray-900 text-sm font-sans">{formatINR(model.principal)}</strong>
@@ -180,13 +296,13 @@ export function FranchisePageClient({ models, terms }: FranchisePageClientProps)
       </section>
 
       {/* Interactive Yield Calculator */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.08]">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08]">
         <div className="max-w-4xl mx-auto space-y-8">
           <FadeUp className="text-center space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-800">
-              [ 02 / 03 • SIMULATOR ]
+              [ 03 / 04 • SIMULATOR ]
             </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-gray-900 font-sans tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-900 font-sans tracking-tight">
               Interactive Return Calculator
             </h2>
             <p className="text-sm text-gray-600">
@@ -194,47 +310,51 @@ export function FranchisePageClient({ models, terms }: FranchisePageClientProps)
             </p>
           </FadeUp>
 
-          <FadeUp delay={0.2}>
+          <FadeUp delay={0.15}>
             <FranchiseCalculator models={models} showApplyButton={true} />
           </FadeUp>
         </div>
       </section>
 
-      {/* 6-Stage Timeline */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <FadeUp className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-800">
-              [ 03 / 03 • EXECUTION ROADMAP ]
+      {/* FAQ Accordion */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.08]">
+        <div className="max-w-4xl mx-auto space-y-10">
+          <FadeUp className="text-center space-y-2">
+            <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
+              [ FAQ ACCORDION ]
             </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-gray-900 font-sans tracking-tight">
-              How the Franchise Model Operates
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 font-sans tracking-tight">
+              Franchise Investor FAQs
             </h2>
           </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {terms.map((term, idx) => (
-              <FadeUp
-                key={term.id}
-                delay={idx * 0.1}
-                className="nestor-card p-6 sm:p-8 space-y-3 shadow-md"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#C91D24] text-white font-black text-sm flex items-center justify-center">
-                  0{term.stepNumber}
-                </div>
-                <h3 className="text-base font-bold text-gray-900 font-sans">{term.title}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed">{term.description}</p>
-              </FadeUp>
-            ))}
+          <div className="space-y-3">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <FadeUp key={idx} delay={idx * 0.05}>
+                  <div className="rounded-2xl bg-[#FAF9F6] border border-black/10 overflow-hidden shadow-xs">
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-gray-100/60"
+                    >
+                      <span className="font-bold text-sm sm:text-base text-gray-900">{faq.q}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-gray-500 shrink-0 transition-transform duration-300 ${
+                          isOpen ? 'rotate-180 text-[#C91D24]' : ''
+                        }`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-gray-600 border-t border-gray-200/60 pt-3 leading-relaxed">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                </FadeUp>
+              );
+            })}
           </div>
-
-          {/* Statutory Disclosure */}
-          <FadeUp delay={0.3} className="p-6 rounded-2xl bg-white border border-black/10 text-xs text-gray-600 flex items-start gap-3 shadow-sm">
-            <Shield className="w-5 h-5 text-[#C91D24] shrink-0 mt-0.5" />
-            <p className="leading-relaxed">
-              <strong>Statutory Disclosure:</strong> Terms shown are based on information supplied by Yoffices and are subject to the final executed agreement and current approved terms. Yoffices does not offer market-linked or speculative financial instruments; commercial franchise arrangements represent managed real estate asset participation.
-            </p>
-          </FadeUp>
         </div>
       </section>
     </div>
