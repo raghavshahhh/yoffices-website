@@ -478,6 +478,32 @@
       "isFeatured": true,
       "published": true,
       "publishedAt": "2026-08-18T16:00:00Z"
+    },
+    {
+      "id": "vid-virtual-office-guide",
+      "title": "Haryana GST & MCA Company Registration via Yoffices Virtual Office",
+      "slug": "haryana-gst-mca-company-registration-virtual-office",
+      "youtubeUrl": "https://youtu.be/qFL2VSeY3WA",
+      "youtubeId": "qFL2VSeY3WA",
+      "thumbnail": "https://img.youtube.com/vi/qFL2VSeY3WA/hqdefault.jpg",
+      "description": "Step-by-step walkthrough on securing compliant commercial rent agreements, owner NOCs, utility electricity bills, and physical signage in Sector 32 & 45 Gurugram.",
+      "category": "Virtual Office",
+      "isFeatured": true,
+      "published": true,
+      "publishedAt": "2026-08-18T18:00:00Z"
+    },
+    {
+      "id": "vid-acoustic-cabins-tour",
+      "title": "Acoustic Wood-Slat Private Cabins & Gourmet Vertical Garden Tour",
+      "slug": "acoustic-wood-slat-private-cabins-gourmet-pantry-tour",
+      "youtubeUrl": "https://youtube.com/shorts/E-yZwQ1oJnU",
+      "youtubeId": "E-yZwQ1oJnU",
+      "thumbnail": "https://img.youtube.com/vi/E-yZwQ1oJnU/hqdefault.jpg",
+      "description": "Tour our high-performance sound-insulated executive cabins, Herman Miller style seating, automated bean-to-cup coffee bar, and biophilic vertical green wall.",
+      "category": "Center Walkthrough",
+      "isFeatured": false,
+      "published": true,
+      "publishedAt": "2026-08-19T02:00:00Z"
     }
   ],
   "blogPosts": [
