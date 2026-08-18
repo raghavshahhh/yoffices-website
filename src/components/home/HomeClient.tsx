@@ -849,9 +849,9 @@ export function HomeClient({
                   ))}
                 </div>
                 <div className="border-l border-gray-300 pl-3 text-left">
-                  <div className="text-xs font-black">4.9 / 5 Rating</div>
+                  <div className="text-xs font-black">4.6 / 5 Rating (10 Reviews)</div>
                   <div className="text-[10px] text-gray-500 font-mono flex items-center gap-1">
-                    <span>Google Maps Reviews</span>
+                    <span>Google Business Profile</span>
                     <ExternalLink className="w-3 h-3 text-gray-400" />
                   </div>
                 </div>
