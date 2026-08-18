@@ -26,9 +26,9 @@ export const INITIAL_SITE_SETTINGS: SiteSettings = {
   bannerLink: '/book-a-visit',
   socialLinks: {
     linkedin: 'https://linkedin.com/company/yoffices',
-    instagram: 'https://instagram.com/yoffices',
-    youtube: 'https://youtube.com/@yoffices',
-    facebook: 'https://facebook.com/yoffices',
+    instagram: 'https://www.instagram.com/y0ffices',
+    youtube: 'https://www.youtube.com/@Yoffices',
+    facebook: 'https://www.facebook.com/61574970523748/',
   },
 };
 

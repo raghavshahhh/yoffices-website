@@ -218,21 +218,82 @@ export function AboutPageClient() {
         </div>
       </section>
 
-      {/* Founder Masterclass Video Spotlight */}
+      {/* Founder Masterclass Video & Leadership Spotlight */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.08]">
-        <div className="max-w-5xl mx-auto space-y-10">
+        <div className="max-w-5xl mx-auto space-y-12">
           <FadeUp className="text-center space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-800">
-              [ 02 / 03 • FOUNDER MASTERCLASS ]
+              [ 02 / 03 • FOUNDER & LEADERSHIP DESK ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 font-sans">
-              Watch the Yoffices Story
+              Leadership & Founder's Story
             </h2>
             <p className="text-sm text-gray-600 max-w-xl mx-auto">
-              Our founders discuss the evolution of flexible workspaces, co-living innovation, and franchise cash flows.
+              Founded in 2015 in Gurugram by Gaurav Singh, Yoffices has grown into a leading flexible workspace & commercial franchise ecosystem.
             </p>
           </FadeUp>
 
+          {/* Founder Profile Card */}
+          <FadeUp delay={0.1} className="nestor-card p-6 sm:p-8 bg-[#FAF9F6] border border-black/10 shadow-lg space-y-6">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#111111] text-white flex flex-col items-center justify-center font-bold shrink-0 shadow-xl border border-black/10">
+                <span className="text-2xl font-black text-[#C91D24]">GS</span>
+                <span className="text-[9px] font-mono text-gray-400 mt-1 uppercase tracking-widest">FOUNDER</span>
+              </div>
+
+              <div className="space-y-2 text-center sm:text-left">
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                  <h3 className="text-xl sm:text-2xl font-black text-gray-900 font-sans">
+                    Gaurav Singh
+                  </h3>
+                  <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[10px]">
+                    FOUNDER & CEO
+                  </span>
+                  <span className="nestor-pill bg-black/5 text-gray-700 font-mono text-[10px]">
+                    EST. 2015 • GURUGRAM
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed pt-1">
+                  "At Yoffices, we believe that where you work defines how you grow. We founded Yoffices in 2015 to bridge the gap between world-class enterprise infrastructure and flexible agility — eliminating heavy CapEx for companies while engineering predictable, high-yield commercial real estate returns for franchise partners."
+                </p>
+
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2 text-xs">
+                  <a
+                    href="https://www.instagram.com/y0ffices"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-bold text-gray-700 hover:text-[#C91D24] transition-colors"
+                  >
+                    <span>Instagram: @y0ffices</span>
+                    <ArrowRight className="w-3 h-3 -rotate-45" />
+                  </a>
+                  <span className="text-gray-300">•</span>
+                  <a
+                    href="https://www.youtube.com/@Yoffices"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-bold text-gray-700 hover:text-[#C91D24] transition-colors"
+                  >
+                    <span>YouTube: @Yoffices (12K+ Subs)</span>
+                    <ArrowRight className="w-3 h-3 -rotate-45" />
+                  </a>
+                  <span className="text-gray-300">•</span>
+                  <a
+                    href="https://www.facebook.com/61574970523748/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-bold text-gray-700 hover:text-[#C91D24] transition-colors"
+                  >
+                    <span>Facebook Community</span>
+                    <ArrowRight className="w-3 h-3 -rotate-45" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+
+          {/* Masterclass Video */}
           <FadeUp delay={0.15}>
             <div className="rounded-3xl bg-[#FAF9F6] border border-black/10 shadow-xl overflow-hidden p-3 sm:p-4">
               <div className="aspect-video max-h-[460px] w-full relative rounded-2xl overflow-hidden bg-black shadow-inner">
@@ -264,7 +325,7 @@ export function AboutPageClient() {
 
                     <div className="absolute bottom-4 left-4 right-4 text-white">
                       <h3 className="text-base sm:text-xl font-bold font-sans">
-                        Founder Masterclass: Transforming Workspaces & Living in India
+                        Founder Masterclass: Gaurav Singh on Transforming Workspaces & Living
                       </h3>
                     </div>
                   </div>

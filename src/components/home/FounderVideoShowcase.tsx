@@ -52,13 +52,13 @@ export function FounderVideoShowcase() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5">
           <FadeUp className="space-y-2">
             <span className="nestor-pill bg-black/5 text-gray-800 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider">
-              [ FOUNDER VISION & MEDIA MASTERCLASS ]
+              [ GAURAV SINGH (FOUNDER & CEO) • EST. 2015 GURUGRAM ]
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold font-sans text-[#111111] tracking-tight">
               Watch How Yoffices Redefines Workspaces
             </h2>
             <p className="text-sm sm:text-base text-gray-600 max-w-2xl leading-relaxed">
-              Official walkthroughs, franchise cash flow breakdowns, and co-living tour directly from the founders.
+              Official walkthroughs, franchise cash flow breakdowns, and co-living tour directly from Founder & CEO Gaurav Singh.
             </p>
           </FadeUp>
 
@@ -100,13 +100,10 @@ export function FounderVideoShowcase() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
-                  {/* Sleek Pulse Play Button */}
+                  {/* Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative flex items-center justify-center">
-                      <span className="absolute w-20 h-20 rounded-full bg-[#C91D24]/40 animate-ping" />
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#C91D24] hover:bg-[#A3151B] text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
-                        <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-white ml-1" />
-                      </div>
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#C91D24] text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                      <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-white ml-1" />
                     </div>
                   </div>
 
@@ -114,7 +111,7 @@ export function FounderVideoShowcase() {
                   <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 text-white">
                     <div className="space-y-1.5">
                       <span className="nestor-pill-dark font-mono text-[9px] uppercase font-bold bg-white/20">
-                        OFFICIAL FOUNDER VIDEO
+                        GAURAV SINGH • FOUNDER & CEO
                       </span>
                       <h3 className="text-lg sm:text-2xl font-extrabold font-sans leading-tight max-w-xl">
                         Commercial Real Estate Passive Income & Franchise Blueprint
