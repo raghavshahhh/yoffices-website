@@ -57,7 +57,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Nestor & Socio-Space Monospace & Pill Badges */
+/* Monospace & Pill Badges */
 .nestor-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -136,7 +136,7 @@ body {
   background: #94A3B8;
 }
 
-/* Infinite Marquee Loop Animations */
+/* Infinite Marquee Loop Animations (Luxurious Slow Gliding Speed) */
 @keyframes marqueeLeft {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-100%); }
@@ -150,7 +150,7 @@ body {
 .animate-marquee-left {
   display: flex;
   width: max-content;
-  animation: marqueeLeft 28s linear infinite;
+  animation: marqueeLeft 65s linear infinite;
 }
 
 .animate-marquee-left:hover {
@@ -160,7 +160,7 @@ body {
 .animate-marquee-right {
   display: flex;
   width: max-content;
-  animation: marqueeRight 28s linear infinite;
+  animation: marqueeRight 65s linear infinite;
 }
 
 .animate-marquee-right:hover {
