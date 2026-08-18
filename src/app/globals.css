@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --primary-red: #C91D24;
+  --primary-red-hover: #A3151B;
+  --primary-red-dark: #7A0F14;
+  --primary-red-subtle: #FFF1F2;
+  --primary-red-border: #FECDD3;
+
+  --dark-bg: #0C0E12;
+  --dark-surface: #14171F;
+  --dark-card: #1B202B;
+  --dark-border: #2A3040;
+
+  --champagne-gold: #C5A880;
+  --champagne-gold-light: #F4EFEA;
+
+  --off-white: #FAF9F6;
+  --pure-white: #FFFFFF;
+  --charcoal: #1E2229;
+  --muted-gray: #64748B;
+  --light-border: #E2E8F0;
+
+  --background: #FAF9F6;
+  --foreground: #1E2229;
+}
+
+@theme {
+  --color-yoffices-red: #C91D24;
+  --color-yoffices-red-hover: #A3151B;
+  --color-yoffices-red-dark: #7A0F14;
+  --color-yoffices-red-subtle: #FFF1F2;
+  
+  --color-yoffices-dark: #0C0E12;
+  --color-yoffices-dark-surface: #14171F;
+  --color-yoffices-dark-card: #1B202B;
+  --color-yoffices-dark-border: #2A3040;
+
+  --color-yoffices-gold: #C5A880;
+  --color-yoffices-gold-light: #F4EFEA;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Luxury Commercial Real Estate Styling */
+.text-balance {
+  text-wrap: balance;
+}
+
+.luxury-gradient-text {
+  background: linear-gradient(135deg, #1E2229 0%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.luxury-red-gradient {
+  background: linear-gradient(135deg, #C91D24 0%, #8B0000 100%);
+}
+
+.luxury-dark-gradient {
+  background: linear-gradient(180deg, #0C0E12 0%, #14171F 100%);
+}
+
+.luxury-card-shadow {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+}
+
+.luxury-card-shadow-hover {
+  box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.12), 0 10px 15px -5px rgba(15, 23, 42, 0.06);
+}
+
+.red-glow {
+  box-shadow: 0 0 25px -5px rgba(201, 29, 36, 0.3);
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Animations & Transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}

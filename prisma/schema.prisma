@@ -1,0 +1,122 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  SUPER_ADMIN
+  STAFF
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  FOLLOW_UP
+  CONVERTED
+  CLOSED
+  NOT_INTERESTED
+}
+
+enum LeadPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum SiteVisitStatus {
+  SCHEDULED
+  CONFIRMED
+  COMPLETED
+  RESCHEDULED
+  CANCELLED
+  NO_SHOW
+}
+
+enum FranchiseStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  NDA_SENT
+  MEETING_SCHEDULED
+  AGREEMENT_SHARED
+  CONVERTED
+  CLOSED
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Lead {
+  id              String       @id @default(uuid())
+  name            String
+  email           String
+  phone           String
+  company         String?
+  service         String
+  workspaceType   String?
+  location        String?
+  teamSize        String?
+  budget          String?
+  message         String?
+  status          LeadStatus   @default(NEW)
+  priority        LeadPriority @default(MEDIUM)
+  source          String       @default("Website")
+  notes           String?
+  assignedTo      String?
+  lastContactedAt DateTime?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+model SiteVisit {
+  id            String          @id @default(uuid())
+  leadId        String?
+  name          String
+  email         String
+  phone         String
+  company       String?
+  workspaceType String?
+  location      String
+  teamSize      String?
+  preferredDate String
+  preferredTime String
+  message       String?
+  status        SiteVisitStatus @default(SCHEDULED)
+  notes         String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model FranchiseApplication {
+  id               String          @id @default(uuid())
+  leadId           String?
+  name             String
+  email            String
+  phone            String
+  city             String
+  investmentRange  String
+  preferredModel   String
+  hasProperty      Boolean         @default(false)
+  propertyLocation String?
+  propertySize     String?
+  experience       String?
+  message          String?
+  status           FranchiseStatus @default(NEW)
+  notes            String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+}
