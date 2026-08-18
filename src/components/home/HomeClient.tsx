@@ -182,41 +182,41 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 1. HERO SECTION (Compact, Aligned & High-End Framer)      */}
       {/* ========================================================= */}
-      <section className="relative pt-6 pb-12 sm:pt-10 sm:pb-16 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08] overflow-hidden">
-        <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
+      <section className="relative pt-4 pb-10 sm:pt-10 sm:pb-16 px-4 sm:px-6 lg:px-8 border-b border-black/[0.08] overflow-hidden">
+        <div className="max-w-7xl mx-auto space-y-5 sm:space-y-8">
           {/* Top Tag & Monospace Pill */}
-          <FadeUp delay={0.05} className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <span className="nestor-pill bg-black/5 border-black/10 text-gray-900 font-mono text-[10px] sm:text-[11px]">
-                <span className="w-2 h-2 rounded-full bg-[#C91D24] animate-ping" />
+          <FadeUp delay={0.05} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="nestor-pill bg-black/5 border-black/10 text-gray-900 font-mono text-[10px] sm:text-[11px] whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C91D24] animate-ping" />
                 [ GURUGRAM • SECTOR 45 & 32 ]
               </span>
-              <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[10px] sm:text-[11px]">
+              <span className="nestor-pill bg-[#C91D24]/10 border-[#C91D24]/20 text-[#C91D24] font-mono text-[10px] sm:text-[11px] whitespace-nowrap">
                 2026 MANAGED SPACES
               </span>
             </div>
 
-            <div className="text-[11px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <div className="text-[10px] sm:text-[11px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               GURGAON METRO CORRIDOR
             </div>
           </FadeUp>
 
           {/* Main Headline & Hero Action in Perfect Alignment */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end">
-            <FadeUp delay={0.1} className="lg:col-span-8 space-y-2.5">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] text-[#111111] leading-[0.98] font-sans">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-end">
+            <FadeUp delay={0.1} className="lg:col-span-8 space-y-2 sm:space-y-3">
+              <h1 className="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.035em] text-[#111111] leading-[1.08] sm:leading-[0.98] font-sans">
                 Spaces crafted with intention.
               </h1>
-              <p className="text-sm sm:text-base text-gray-600 max-w-xl font-normal leading-relaxed">
+              <p className="text-xs sm:text-base text-gray-600 max-w-xl font-normal leading-relaxed">
                 Light-filled private cabins, ergonomic workstations, and asset-backed commercial franchise opportunities engineered for ambitious companies.
               </p>
             </FadeUp>
 
-            <FadeUp delay={0.15} className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-2.5 justify-end">
+            <FadeUp delay={0.15} className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-2.5 justify-end pt-1 sm:pt-0">
               <Link
                 href="/book-a-visit"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Schedule a Walkthrough</span>
@@ -225,7 +225,7 @@ export function HomeClient({
 
               <Link
                 href="/franchise"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl bg-[#111111] hover:bg-black text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#111111] hover:bg-black text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
               >
                 <Coins className="w-4 h-4 text-[#C5A880]" />
                 <span>Franchise (₹5,000/mo Yield)</span>
@@ -234,10 +234,10 @@ export function HomeClient({
           </div>
 
           {/* Large Hero Visual Grid using REAL Office Photos with Lightbox Click */}
-          <FadeUp delay={0.2} className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 pt-2">
+          <FadeUp delay={0.2} className="grid grid-cols-1 md:grid-cols-12 gap-3.5 sm:gap-5 pt-1 sm:pt-2">
             <div
               onClick={() => openLightbox(0)}
-              className="md:col-span-8 relative h-[360px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-black/5 group cursor-pointer"
+              className="md:col-span-8 relative h-[300px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-black/5 group cursor-pointer"
             >
               <img
                 src="/images/center/executive-cabin-acoustic.jpg"
@@ -251,12 +251,12 @@ export function HomeClient({
                 <ZoomIn className="w-4 h-4" />
               </div>
 
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-white">
+              <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between text-white">
                 <div className="space-y-1">
-                  <span className="nestor-pill-dark font-mono text-[10px]">
+                  <span className="nestor-pill-dark font-mono text-[9px] sm:text-[10px]">
                     ACTUAL PHOTO • SECTOR 45 FLAGSHIP
                   </span>
-                  <div className="text-xl sm:text-2xl font-bold font-sans">
+                  <div className="text-lg sm:text-2xl font-bold font-sans">
                     Acoustic Wood-Slat Executive Cabins
                   </div>
                   <p className="text-xs text-gray-300 hidden sm:block">
@@ -264,14 +264,14 @@ export function HomeClient({
                   </p>
                 </div>
                 <div
-                  className="w-11 h-11 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center backdrop-blur-md transition-all shrink-0"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center backdrop-blur-md transition-all shrink-0"
                 >
-                  <ArrowRight className="w-5 h-5 -rotate-45" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 -rotate-45" />
                 </div>
               </div>
             </div>
 
-            <div className="md:col-span-4 flex flex-col gap-4 sm:gap-5">
+            <div className="md:col-span-4 flex flex-col gap-3.5 sm:gap-5">
               <div
                 onClick={() => openLightbox(4)}
                 className="relative h-[215px] rounded-3xl overflow-hidden shadow-lg border border-black/5 group cursor-pointer"

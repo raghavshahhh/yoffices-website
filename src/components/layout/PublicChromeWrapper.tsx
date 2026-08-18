@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { AnnouncementBanner } from '@/components/layout/AnnouncementBanner';
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
+import { LeadPopupModal } from '@/components/ui/LeadPopupModal';
 import { INITIAL_SITE_SETTINGS } from '@/lib/constants';
 
 interface PublicChromeWrapperProps {
@@ -31,6 +32,7 @@ export function PublicChromeWrapper({ children }: PublicChromeWrapperProps) {
       <main className="flex-1 flex flex-col w-full">{children}</main>
       <Footer />
       <WhatsAppButton />
+      <LeadPopupModal />
     </>
   );
 }

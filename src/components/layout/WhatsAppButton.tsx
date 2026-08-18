@@ -31,7 +31,7 @@ export function WhatsAppButton() {
   }
 
   return (
-    <aside aria-label="WhatsApp quick chat" className="fixed bottom-6 right-6 z-40 flex items-center group">
+    <aside aria-label="WhatsApp quick chat" className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center group">
       <div className="hidden sm:block mr-2.5 px-3 py-1.5 rounded-xl bg-white text-xs font-semibold text-gray-800 shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
         Chat with Yoffices Advisor
       </div>
@@ -39,10 +39,10 @@ export function WhatsAppButton() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-13 h-13 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
+        className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="w-7 h-7 fill-white text-[#25D366]" />
+        <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-[#25D366]" />
       </a>
     </aside>
   );
