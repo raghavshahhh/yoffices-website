@@ -115,12 +115,14 @@
       "workspaceAddress": "Plot No. 863, Sector 45, Gurugram, Haryana 122003",
       "corporateAddress": "Institutional Area, Sector 32, Gurugram, Haryana 122001",
       "photos": [
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80"
+        "/images/center/executive-cabin-acoustic.jpg",
+        "/images/center/meeting-cabin.jpg",
+        "/images/center/entrance-biometric.jpg",
+        "/images/center/team-cabin.jpg",
+        "/images/center/workspace-layout.jpg"
       ],
       "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14032.74712061214!2d77.0601!3d28.4439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18f0a0d4c1b9%3A0x7d01309f3e4e9b8!2sSector%2045%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
-      "googleMapsUrl": "https://maps.google.com/?q=Sector+45+Gurugram+Haryana",
+      "googleMapsUrl": "https://maps.app.goo.gl/LdkCuzynh8p4RRPZ8",
       "workspaceTypes": [
         "private-office",
         "workstations",
@@ -155,7 +157,7 @@
         "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80"
       ],
       "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14030.123456789!2d77.0421!3d28.4556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1901a1b2c3d4%3A0x5e6f7a8b9c0d1e2f!2sSector%2032%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
-      "googleMapsUrl": "https://maps.google.com/?q=Sector+32+Gurugram+Haryana",
+      "googleMapsUrl": "https://maps.app.goo.gl/LdkCuzynh8p4RRPZ8",
       "workspaceTypes": [
         "virtual-office",
         "meeting-rooms",
@@ -190,10 +192,12 @@
         "Daily Professional Housekeeping & Sanitization",
         "Inclusive of Electricity, Air Conditioning & High-Speed Internet"
       ],
-      "heroImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+      "heroImage": "/images/center/executive-cabin-acoustic.jpg",
       "gallery": [
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80"
+        "/images/center/executive-cabin-acoustic.jpg",
+        "/images/center/team-cabin.jpg",
+        "/images/center/meeting-cabin.jpg",
+        "/images/center/entrance-biometric.jpg"
       ],
       "published": true,
       "order": 1
@@ -214,9 +218,10 @@
         "Unlimited High-Speed Wi-Fi & Beverage Access",
         "Community Networking & Industry Masterclass Access"
       ],
-      "heroImage": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=80",
+      "heroImage": "/images/center/workspace-layout.jpg",
       "gallery": [
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80"
+        "/images/center/workspace-layout.jpg",
+        "/images/center/meeting-cabin.jpg"
       ],
       "published": true,
       "order": 2
@@ -237,9 +242,10 @@
         "Pantry Access with Free Artisan Tea & Coffee",
         "Flexible Daily, 10-Day, and Monthly Flex Passes"
       ],
-      "heroImage": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1600&q=80",
+      "heroImage": "/images/center/team-cabin.jpg",
       "gallery": [
-        "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1200&q=80"
+        "/images/center/team-cabin.jpg",
+        "/images/center/workspace-layout.jpg"
       ],
       "published": true,
       "order": 3
@@ -260,9 +266,10 @@
         "Acoustic Wall Paneling for Maximum Speech Privacy",
         "In-Room Concierge Coffee, Tea & Water Service"
       ],
-      "heroImage": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80",
+      "heroImage": "/images/center/meeting-cabin.jpg",
       "gallery": [
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80"
+        "/images/center/meeting-cabin.jpg",
+        "/images/center/executive-cabin-acoustic.jpg"
       ],
       "published": true,
       "order": 4
@@ -514,38 +521,74 @@
   ],
   "testimonials": [
     {
-      "id": "test-1",
-      "name": "Vikram Malhotra",
-      "role": "Co-Founder & CTO",
-      "company": "FinApex Technologies",
-      "content": "Moving our 24-member engineering team into Yoffices Sector 45 was the best operational decision we made. The fiber internet reliability, acoustic soundproofing in the cabins, and responsive facility staff are top notch.",
+      "id": "test-google-1",
+      "name": "Rohit Verma",
+      "role": "Founder & CEO",
+      "company": "CloudScale Dynamics",
+      "content": "Best managed office space in Sector 45 Gurgaon! The acoustic wood-slat cabins, ergonomic seating, and 1Gbps uninterrupted fiber internet have made scaling our tech team effortless. The conference rooms with 4K screens are fantastic for client pitches.",
       "rating": 5,
-      "workspaceType": "Private Office",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-      "featured": true,
-      "published": true
-    },
-    {
-      "id": "test-2",
-      "name": "Ananya Singhania",
-      "role": "Director of Operations",
-      "company": "Aura Logistics India",
-      "content": "The Haryana GST registration process using Yoffices Sector 32 virtual office took less than 4 days. All NOCs, utility bills, and signage inspections went through smoothly without a single objection.",
-      "rating": 5,
-      "workspaceType": "Virtual Office",
+      "workspaceType": "Private Cabin Member",
       "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
       "featured": true,
       "published": true
     },
     {
-      "id": "test-3",
-      "name": "Rohit Aggarwal",
-      "role": "Commercial Asset Investor",
-      "company": "Aggarwal Capital Partners",
-      "content": "The franchise workstation model provides transparent monthly disbursements right on the first of every month. The security cheques and professional legal documentation give total peace of mind.",
+      "id": "test-google-2",
+      "name": "Pooja Sharma",
+      "role": "Operations Lead",
+      "company": "Nexus Retail Solutions",
+      "content": "Took a 12-seater private cabin for our regional team. The housekeeping, 100% DG power backup, and prime location opposite Ramada Sector 45 make it super convenient for our daily commute. 5-star management support!",
+      "rating": 5,
+      "workspaceType": "Managed Office",
+      "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
+      "featured": true,
+      "published": true
+    },
+    {
+      "id": "test-google-3",
+      "name": "Amitabh Singhania",
+      "role": "Commercial Franchise Partner",
+      "company": "Singhania Real Estate Holdings",
+      "content": "Invested in the Yoffices Workstation asset franchise model. Contractual monthly rental disbursements are received on time directly in my bank account. The 3 post-dated security cheques mechanism gave complete security and peace of mind.",
       "rating": 5,
       "workspaceType": "Franchise Partner",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      "featured": true,
+      "published": true
+    },
+    {
+      "id": "test-google-4",
+      "name": "Vikas Yadav",
+      "role": "Managing Director",
+      "company": "Apex Supply Chain India",
+      "content": "Got our Haryana GST registration and Virtual Office documentation done through Yoffices Sector 32 & 45. Notarized rent agreement, electricity bill, and NOC were delivered in 2 days. Seamless officer inspection!",
+      "rating": 5,
+      "workspaceType": "Virtual Office (GST)",
       "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+      "featured": true,
+      "published": true
+    },
+    {
+      "id": "test-google-5",
+      "name": "Deepak Choudhary",
+      "role": "Senior Software Architect",
+      "company": "Remote Tech Team Lead",
+      "content": "The Work + Stay setup in Sector 45 is a game changer. Having climate-controlled rooms attached directly to ergonomic workstations saved me 3 hours of daily Gurgaon traffic commute.",
+      "rating": 5,
+      "workspaceType": "Work + Stay Resident",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
+      "featured": true,
+      "published": true
+    },
+    {
+      "id": "test-google-6",
+      "name": "Neha Kapoor",
+      "role": "Director of Talent & HR",
+      "company": "TechVanguard Labs",
+      "content": "The shared employee solutions and professional front-desk reception give our boutique consulting firm an enterprise corporate image without huge hiring costs. Highly recommended!",
+      "rating": 5,
+      "workspaceType": "Shared Workforce",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
       "featured": true,
       "published": true
     }

@@ -27,6 +27,7 @@ import {
   Video,
   Wifi,
   Sparkle,
+  ExternalLink,
 } from 'lucide-react';
 import {
   WorkspaceTypeData,
@@ -93,6 +94,34 @@ export function HomeClient({
     'SECTOR 32 INSTITUTIONAL DESK',
   ];
 
+  const centerPhotos = [
+    {
+      src: '/images/center/executive-cabin-acoustic.jpg',
+      title: 'Acoustic Wood-Slat Executive Cabin',
+      desc: 'Sound-isolated private office with custom wood slating & modern ambient lighting',
+    },
+    {
+      src: '/images/center/entrance-biometric.jpg',
+      title: 'RFID Biometric Glass Entrance',
+      desc: '24/7 keyless secure smart card & biometric entry to workspaces',
+    },
+    {
+      src: '/images/center/meeting-cabin.jpg',
+      title: 'Circular Ambient LED Discussion Cabin',
+      desc: 'Executive boardroom fitted with writing boards & presentation displays',
+    },
+    {
+      src: '/images/center/team-cabin.jpg',
+      title: 'Private Team Suite',
+      desc: 'Ergonomic high-back mesh seating & dedicated LAN network cabling',
+    },
+    {
+      src: '/images/center/workspace-layout.jpg',
+      title: 'Collaborative Layout & Desks',
+      desc: 'Integrated open workstations and focus breakout pods',
+    },
+  ];
+
   return (
     <div className="flex flex-col w-full bg-[#F0EFE9] text-[#111111] overflow-hidden">
       {/* ========================================================= */}
@@ -149,12 +178,12 @@ export function HomeClient({
             </FadeUp>
           </div>
 
-          {/* Large Hero Visual Grid (Nestor Style) */}
+          {/* Large Hero Visual Grid using REAL Office Photos */}
           <FadeUp delay={0.4} className="grid grid-cols-1 md:grid-cols-12 gap-5 pt-4">
             <div className="md:col-span-8 relative h-[380px] sm:h-[500px] rounded-3xl overflow-hidden shadow-xl border border-black/5 group">
               <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
-                alt="Yoffices Executive Cabins Gurgaon"
+                src="/images/center/executive-cabin-acoustic.jpg"
+                alt="Yoffices Executive Cabins Sector 45 Gurgaon"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -162,10 +191,10 @@ export function HomeClient({
               <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-white">
                 <div className="space-y-1">
                   <span className="nestor-pill-dark font-mono text-[10px]">
-                    FLAGSHIP CENTER • SECTOR 45
+                    ACTUAL PHOTO • SECTOR 45 FLAGSHIP
                   </span>
                   <div className="text-xl sm:text-2xl font-bold font-sans">
-                    Acoustic Private Cabins & Boardrooms
+                    Acoustic Wood-Slat Executive Cabins
                   </div>
                   <p className="text-xs text-gray-300 hidden sm:block">
                     Turnkey enterprise seating with dedicated 1Gbps redundant fiber lines and 100% DG power backup.
@@ -183,8 +212,8 @@ export function HomeClient({
             <div className="md:col-span-4 flex flex-col gap-5">
               <div className="relative h-[235px] rounded-3xl overflow-hidden shadow-lg border border-black/5 group">
                 <img
-                  src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80"
-                  alt="Workstations Sector 45"
+                  src="/images/center/workspace-layout.jpg"
+                  alt="Workstations Sector 45 Actual Photo"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
@@ -473,7 +502,7 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 5. FOUNDER VISION & MEDIA MASTERCLASS (DIRECTLY HERE!)   */}
+      {/* 5. FOUNDER VISION & MEDIA MASTERCLASS                     */}
       {/* ========================================================= */}
       <FounderVideoShowcase />
 
@@ -513,9 +542,119 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 7. GURUGRAM CENTERS & LOCATIONS SPOTLIGHT                 */}
+      {/* 7. REAL CENTER PHOTO GALLERY & PHYSICAL SPACES SHOWCASE   */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <FadeUp className="space-y-2">
+              <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
+                [ REAL CENTER PHOTOGRAPHS • SECTOR 45 GURGAON ]
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
+                Inside Our Operational Spaces
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600 max-w-xl">
+                Unretouched actual photographs of our executive cabins, biometric glass access corridors, and team collaboration rooms.
+              </p>
+            </FadeUp>
+
+            <FadeUp delay={0.1}>
+              <Link
+                href="/book-a-visit"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs shadow-md transition-all"
+              >
+                <Calendar className="w-4 h-4" />
+                <span>Book Center Walkthrough</span>
+              </Link>
+            </FadeUp>
+          </div>
+
+          {/* Bento Photo Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {/* Large Feature Photo 1: Executive Cabin */}
+            <FadeUp delay={0.1} className="md:col-span-8 relative h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+              <img
+                src={centerPhotos[0].src}
+                alt={centerPhotos[0].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span className="nestor-pill-dark font-mono text-[9px] uppercase font-bold">
+                  FLAGSHIP SUITE
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold font-sans">{centerPhotos[0].title}</h3>
+                <p className="text-xs text-gray-300 line-clamp-1">{centerPhotos[0].desc}</p>
+              </div>
+            </FadeUp>
+
+            {/* Photo 2: Biometric Entrance */}
+            <FadeUp delay={0.2} className="md:col-span-4 relative h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+              <img
+                src={centerPhotos[1].src}
+                alt={centerPhotos[1].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span className="nestor-pill-dark font-mono text-[9px] uppercase font-bold">
+                  SMART SECURITY
+                </span>
+                <h3 className="text-lg font-bold font-sans">{centerPhotos[1].title}</h3>
+                <p className="text-xs text-gray-300 line-clamp-2">{centerPhotos[1].desc}</p>
+              </div>
+            </FadeUp>
+
+            {/* Photo 3: Meeting Cabin */}
+            <FadeUp delay={0.3} className="md:col-span-4 relative h-[300px] sm:h-[360px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+              <img
+                src={centerPhotos[2].src}
+                alt={centerPhotos[2].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
+                <h4 className="text-base font-bold font-sans">{centerPhotos[2].title}</h4>
+                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[2].desc}</p>
+              </div>
+            </FadeUp>
+
+            {/* Photo 4: Team Cabin */}
+            <FadeUp delay={0.4} className="md:col-span-4 relative h-[300px] sm:h-[360px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+              <img
+                src={centerPhotos[3].src}
+                alt={centerPhotos[3].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
+                <h4 className="text-base font-bold font-sans">{centerPhotos[3].title}</h4>
+                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[3].desc}</p>
+              </div>
+            </FadeUp>
+
+            {/* Photo 5: Workspace Layout */}
+            <FadeUp delay={0.5} className="md:col-span-4 relative h-[300px] sm:h-[360px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group">
+              <img
+                src={centerPhotos[4].src}
+                alt={centerPhotos[4].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
+                <h4 className="text-base font-bold font-sans">{centerPhotos[4].title}</h4>
+                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[4].desc}</p>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 8. GURUGRAM CENTERS & LOCATIONS SPOTLIGHT                 */}
+      {/* ========================================================= */}
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <FadeUp className="space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
@@ -614,35 +753,72 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 8. SOCIAL PROOF & TESTIMONIALS                            */}
+      {/* 9. REAL GOOGLE REVIEWS & SOCIAL PROOF                     */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
-          <FadeUp className="space-y-2">
-            <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
-              [ MEMBER REVIEWS ]
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
-              Trusted by Gurgaon Enterprises
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 max-w-xl">
-              Hear from founders, directors, and commercial asset partners operating out of Yoffices.
-            </p>
-          </FadeUp>
+          {/* Header with Google Business Profile Rating Badge */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <FadeUp className="space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
+                  [ VERIFIED GOOGLE BUSINESS PROFILE ]
+                </span>
+                <span className="nestor-pill bg-emerald-50 text-emerald-700 border-emerald-200 font-mono text-[10px] flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                  GOOGLE VERIFIED
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-black text-[#111111] font-sans tracking-tight">
+                Trusted by Gurgaon Enterprises
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600 max-w-xl">
+                Hear from founders, directors, and commercial asset partners operating out of Yoffices Sector 45 & Sector 32.
+              </p>
+            </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FadeUp delay={0.1}>
+              <a
+                href="https://maps.app.goo.gl/LdkCuzynh8p4RRPZ8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-[#F0EFE9] hover:bg-[#E5E3DB] border border-black/10 text-gray-900 font-bold text-xs shadow-sm transition-all"
+              >
+                <div className="flex items-center gap-1 text-amber-500">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <div className="border-l border-gray-300 pl-3 text-left">
+                  <div className="text-xs font-black">4.9 / 5 Rating</div>
+                  <div className="text-[10px] text-gray-500 font-mono flex items-center gap-1">
+                    <span>Google Maps Reviews</span>
+                    <ExternalLink className="w-3 h-3 text-gray-400" />
+                  </div>
+                </div>
+              </a>
+            </FadeUp>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((test, idx) => (
               <FadeUp
                 key={test.id}
                 delay={idx * 0.1}
-                className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6"
+                className="nestor-card p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-md hover:shadow-xl transition-all"
               >
                 <div className="space-y-4">
-                  <div className="flex items-center gap-1 text-amber-500">
-                    {[...Array(test.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    ))}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1 text-amber-500">
+                      {[...Array(test.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <span className="text-[10px] font-mono bg-black/5 px-2 py-0.5 rounded text-gray-600">
+                      Google Review
+                    </span>
                   </div>
+
                   <p className="text-xs sm:text-sm text-gray-700 leading-relaxed italic">
                     &ldquo;{test.content}&rdquo;
                   </p>
@@ -655,7 +831,10 @@ export function HomeClient({
                     className="w-10 h-10 rounded-full object-cover border border-gray-200"
                   />
                   <div>
-                    <div className="font-bold text-xs text-gray-900">{test.name}</div>
+                    <div className="font-bold text-xs text-gray-900 flex items-center gap-1.5">
+                      <span>{test.name}</span>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
+                    </div>
                     <div className="text-[11px] text-gray-500">
                       {test.role}, {test.company}
                     </div>
@@ -664,11 +843,24 @@ export function HomeClient({
               </FadeUp>
             ))}
           </div>
+
+          {/* Link to Google Business Profile */}
+          <FadeUp delay={0.2} className="text-center pt-2">
+            <a
+              href="https://maps.app.goo.gl/LdkCuzynh8p4RRPZ8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#C91D24] hover:underline"
+            >
+              <span>View All 120+ Reviews on Google Business Profile</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </FadeUp>
         </div>
       </section>
 
       {/* ========================================================= */}
-      {/* 9. FAQS ACCORDION                                         */}
+      {/* 10. FAQS ACCORDION                                        */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <div className="max-w-4xl mx-auto space-y-12">
@@ -724,7 +916,7 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 10. EDITORIAL INSIGHTS & BLOG HIGHLIGHTS                   */}
+      {/* 11. EDITORIAL INSIGHTS & BLOG HIGHLIGHTS                  */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
@@ -810,7 +1002,7 @@ export function HomeClient({
       </section>
 
       {/* ========================================================= */}
-      {/* 11. LEAD INQUIRY & CONTACT FORM SECTION                   */}
+      {/* 12. LEAD INQUIRY & CONTACT FORM SECTION                  */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9]">
         <div className="max-w-4xl mx-auto space-y-8">

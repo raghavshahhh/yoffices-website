@@ -78,8 +78,8 @@ export function AboutPageClient() {
 
             <FadeUp delay={0.2} className="lg:col-span-6 relative rounded-3xl overflow-hidden shadow-2xl border border-black/5 h-[380px]">
               <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
-                alt="Yoffices Center"
+                src="/images/center/meeting-cabin.jpg"
+                alt="Yoffices Sector 45 Discussion & Executive Cabin"
                 className="w-full h-full object-cover"
               />
             </FadeUp>
