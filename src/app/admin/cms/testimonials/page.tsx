@@ -88,8 +88,8 @@ export default function AdminTestimonialsCmsPage() {
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634]">
-        <h1 className="text-2xl font-black text-white font-sans">Testimonials CMS</h1>
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200">
+        <h1 className="text-2xl font-black text-gray-900 font-sans">Testimonials CMS</h1>
         <p className="text-xs text-gray-400 mt-1">Manage member reviews and client endorsements.</p>
       </div>
 
@@ -101,8 +101,8 @@ export default function AdminTestimonialsCmsPage() {
       )}
 
       {/* Add Form */}
-      <form onSubmit={handleAdd} className="bg-[#14171F] p-6 sm:p-8 rounded-2xl border border-[#222634] space-y-4">
-        <h2 className="text-base font-bold text-white border-b border-[#222634] pb-2">
+      <form onSubmit={handleAdd} className="bg-white border border-gray-200 shadow-xs p-6 sm:p-8 rounded-2xl border border-gray-200 space-y-4">
+        <h2 className="text-base font-bold text-gray-900 border-b border-gray-200 pb-2">
           Add New Testimonial
         </h2>
 
@@ -114,7 +114,7 @@ export default function AdminTestimonialsCmsPage() {
               required
               value={newTest.name}
               onChange={(e) => setNewTest({ ...newTest, name: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+              className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
             />
           </div>
           <div>
@@ -124,7 +124,7 @@ export default function AdminTestimonialsCmsPage() {
               required
               value={newTest.role}
               onChange={(e) => setNewTest({ ...newTest, role: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+              className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
             />
           </div>
           <div>
@@ -134,7 +134,7 @@ export default function AdminTestimonialsCmsPage() {
               required
               value={newTest.company}
               onChange={(e) => setNewTest({ ...newTest, company: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+              className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
             />
           </div>
         </div>
@@ -146,7 +146,7 @@ export default function AdminTestimonialsCmsPage() {
             required
             value={newTest.content}
             onChange={(e) => setNewTest({ ...newTest, content: e.target.value })}
-            className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none resize-none"
+            className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none resize-none"
           />
         </div>
 
@@ -162,10 +162,10 @@ export default function AdminTestimonialsCmsPage() {
       {/* List */}
       <div className="space-y-3">
         {testimonials.map((t) => (
-          <div key={t.id} className="bg-[#14171F] p-4 rounded-xl border border-[#222634] flex items-center justify-between gap-4">
+          <div key={t.id} className="bg-white border border-gray-200 shadow-xs p-4 rounded-xl border border-gray-200 flex items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="font-bold text-white text-sm">{t.name}</span>
+                <span className="font-bold text-gray-900 text-sm">{t.name}</span>
                 <span className="text-xs text-gray-400">({t.role}, {t.company})</span>
               </div>
               <p className="text-xs text-gray-400 line-clamp-1 italic">"{t.content}"</p>

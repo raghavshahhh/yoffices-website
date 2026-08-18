@@ -39,70 +39,68 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0C0E12] flex items-center justify-center p-4 relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-[#C91D24]/15 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="w-full max-w-md bg-[#14171F] border border-[#222634] rounded-2xl p-8 shadow-2xl relative z-10 space-y-6">
+    <div className="min-h-screen bg-[#F4F5F7] flex items-center justify-center p-4 relative overflow-hidden">
+      <div className="w-full max-w-md bg-white border border-gray-200 rounded-3xl p-8 sm:p-10 shadow-xl relative z-10 space-y-6">
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-xl bg-[#C91D24] text-white flex items-center justify-center mx-auto shadow-lg">
+          <div className="w-12 h-12 rounded-2xl bg-[#C91D24] text-white flex items-center justify-center mx-auto shadow-md">
             <Shield className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl font-black text-white font-sans">Yoffices Admin Portal</h1>
-          <p className="text-xs text-gray-400">Single Unified Control Center & CMS</p>
+          <h1 className="text-2xl font-black text-gray-900 font-sans">Yoffices Admin Portal</h1>
+          <p className="text-xs text-gray-500">Executive Control Center & Content Management</p>
         </div>
 
         {error && (
-          <div className="p-3.5 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-2.5 text-xs text-red-400 font-medium animate-fade-in">
-            <AlertCircle className="w-4 h-4 shrink-0" />
+          <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2.5 text-xs text-red-700 font-medium animate-fade-in">
+            <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
             <span>{error}</span>
           </div>
         )}
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
               Admin Email
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-gray-500 absolute left-3.5 top-3" />
+              <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@yoffices.com"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-[#1B202B] border border-[#2A3040] focus:border-[#C91D24] focus:ring-1 focus:ring-[#C91D24] text-sm text-white outline-none transition-all"
+                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-[#C91D24] focus:bg-white text-sm text-gray-900 outline-none transition-all"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
               Password
             </label>
             <div className="relative">
-              <Lock className="w-4 h-4 text-gray-500 absolute left-3.5 top-3" />
+              <Lock className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-[#1B202B] border border-[#2A3040] focus:border-[#C91D24] focus:ring-1 focus:ring-[#C91D24] text-sm text-white outline-none transition-all"
+                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-[#C91D24] focus:bg-white text-sm text-gray-900 outline-none transition-all"
               />
             </div>
           </div>
 
-          <div className="p-3 bg-[#1B202B] rounded-xl border border-[#2A3040] text-[11px] text-gray-400 space-y-1">
-            <p className="font-semibold text-gray-300">Default Super Admin Credentials:</p>
-            <p>Email: <code className="text-[#C5A880]">admin@yoffices.com</code></p>
-            <p>Password: <code className="text-[#C5A880]">admin123</code></p>
+          <div className="p-3.5 bg-gray-50 rounded-xl border border-gray-200 text-[11px] text-gray-600 space-y-1">
+            <p className="font-bold text-gray-800">Default Super Admin Credentials:</p>
+            <p>Email: <code className="text-[#C91D24] font-semibold">admin@yoffices.com</code></p>
+            <p>Password: <code className="text-[#C91D24] font-semibold">admin123</code></p>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 rounded-xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-sm tracking-wide shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
+            className="w-full py-3 rounded-xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -111,18 +109,12 @@ export default function AdminLoginPage() {
               </>
             ) : (
               <>
-                <span>Secure Sign In</span>
+                <span>Access Admin Control Center</span>
                 <ArrowRight className="w-4 h-4" />
               </>
             )}
           </button>
         </form>
-
-        <div className="text-center pt-2">
-          <a href="/" className="text-xs text-gray-400 hover:text-white transition-colors">
-            ← Return to public website
-          </a>
-        </div>
       </div>
     </div>
   );

@@ -84,8 +84,8 @@ export default function AdminBlogCmsPage() {
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634]">
-        <h1 className="text-2xl font-black text-white font-sans">Blog & SEO Articles CMS</h1>
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200">
+        <h1 className="text-2xl font-black text-gray-900 font-sans">Blog & SEO Articles CMS</h1>
         <p className="text-xs text-gray-400 mt-1">
           Publish SEO-optimized articles, guides, and corporate announcements.
         </p>
@@ -99,8 +99,8 @@ export default function AdminBlogCmsPage() {
       )}
 
       {/* Add Blog Post Form */}
-      <div className="bg-[#14171F] p-6 sm:p-8 rounded-2xl border border-[#222634] space-y-4">
-        <h2 className="text-base font-bold text-white border-b border-[#222634] pb-2">
+      <div className="bg-white border border-gray-200 shadow-xs p-6 sm:p-8 rounded-2xl border border-gray-200 space-y-4">
+        <h2 className="text-base font-bold text-gray-900 border-b border-gray-200 pb-2">
           Create New Article
         </h2>
 
@@ -118,7 +118,7 @@ export default function AdminBlogCmsPage() {
                   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
                   setNewPost({ ...newPost, title, slug });
                 }}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
 
@@ -129,7 +129,7 @@ export default function AdminBlogCmsPage() {
                 required
                 value={newPost.slug}
                 onChange={(e) => setNewPost({ ...newPost, slug: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function AdminBlogCmsPage() {
                 required
                 value={newPost.category}
                 onChange={(e) => setNewPost({ ...newPost, category: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
             <div>
@@ -152,7 +152,7 @@ export default function AdminBlogCmsPage() {
                 required
                 value={newPost.author}
                 onChange={(e) => setNewPost({ ...newPost, author: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
             <div>
@@ -161,7 +161,7 @@ export default function AdminBlogCmsPage() {
                 type="text"
                 value={newPost.readTime}
                 onChange={(e) => setNewPost({ ...newPost, readTime: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function AdminBlogCmsPage() {
               placeholder="Short summary for preview cards and SEO..."
               value={newPost.excerpt}
               onChange={(e) => setNewPost({ ...newPost, excerpt: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none resize-none"
+              className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none resize-none"
             />
           </div>
 
@@ -185,7 +185,7 @@ export default function AdminBlogCmsPage() {
               required
               value={newPost.coverImage}
               onChange={(e) => setNewPost({ ...newPost, coverImage: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+              className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
             />
           </div>
 
@@ -199,7 +199,7 @@ export default function AdminBlogCmsPage() {
               placeholder="Write full article content here..."
               value={newPost.content}
               onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+              className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
             />
           </div>
 
@@ -216,14 +216,14 @@ export default function AdminBlogCmsPage() {
       </div>
 
       {/* Posts List */}
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634] space-y-4">
-        <h2 className="text-base font-bold text-white">Published Articles ({posts.length})</h2>
-        <div className="divide-y divide-[#222634]">
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200 space-y-4">
+        <h2 className="text-base font-bold text-gray-900">Published Articles ({posts.length})</h2>
+        <div className="divide-y divide-gray-100">
           {posts.map((post) => (
             <div key={post.id} className="py-4 flex items-center justify-between gap-4">
               <div className="space-y-1">
                 <span className="text-[10px] uppercase font-bold text-[#C91D24]">{post.category}</span>
-                <h3 className="text-sm font-bold text-white">{post.title}</h3>
+                <h3 className="text-sm font-bold text-gray-900">{post.title}</h3>
                 <div className="text-xs text-gray-500">{post.author} • {post.readTime}</div>
               </div>
 
@@ -232,13 +232,13 @@ export default function AdminBlogCmsPage() {
                   href={`/blog/${post.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-[#1B202B] text-gray-300 hover:text-white transition-colors"
+                  className="p-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 hover:text-white transition-colors"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
                 <button
                   onClick={() => handleDelete(post.id)}
-                  className="p-2 rounded-lg bg-[#1B202B] text-gray-400 hover:text-red-400 transition-colors"
+                  className="p-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-400 hover:text-red-400 transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>

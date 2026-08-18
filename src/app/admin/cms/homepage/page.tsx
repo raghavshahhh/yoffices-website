@@ -54,9 +54,9 @@ export default function AdminHomepageCmsPage() {
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634] flex items-center justify-between">
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-white font-sans">Homepage Hero & Sections Editor</h1>
+          <h1 className="text-2xl font-black text-gray-900 font-sans">Homepage Hero & Sections Editor</h1>
           <p className="text-xs text-gray-400 mt-1">
             Customize headlines, subtext, and primary conversion call-to-actions.
           </p>
@@ -70,9 +70,9 @@ export default function AdminHomepageCmsPage() {
         </div>
       )}
 
-      <form onSubmit={handleSave} className="bg-[#14171F] p-6 sm:p-8 rounded-2xl border border-[#222634] space-y-6">
+      <form onSubmit={handleSave} className="bg-white border border-gray-200 shadow-xs p-6 sm:p-8 rounded-2xl border border-gray-200 space-y-6">
         <div className="space-y-4">
-          <h2 className="text-base font-bold text-white font-sans border-b border-[#222634] pb-2">
+          <h2 className="text-base font-bold text-gray-900 font-sans border-b border-gray-200 pb-2">
             Main Hero Banner
           </h2>
 
@@ -85,7 +85,7 @@ export default function AdminHomepageCmsPage() {
               required
               value={heroData.headline}
               onChange={(e) => setHeroData({ ...heroData, headline: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#1B202B] border border-[#2A3040] text-sm text-white outline-none focus:border-[#C91D24]"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-sm text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900"
             />
           </div>
 
@@ -98,7 +98,7 @@ export default function AdminHomepageCmsPage() {
               required
               value={heroData.subheadline}
               onChange={(e) => setHeroData({ ...heroData, subheadline: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#1B202B] border border-[#2A3040] text-sm text-white outline-none focus:border-[#C91D24] resize-none"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-sm text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900 resize-none"
             />
           </div>
 
@@ -111,7 +111,7 @@ export default function AdminHomepageCmsPage() {
                 type="text"
                 value={heroData.primaryCtaText}
                 onChange={(e) => setHeroData({ ...heroData, primaryCtaText: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
             <div>
@@ -122,7 +122,7 @@ export default function AdminHomepageCmsPage() {
                 type="text"
                 value={heroData.primaryCtaLink}
                 onChange={(e) => setHeroData({ ...heroData, primaryCtaLink: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function AdminHomepageCmsPage() {
                 type="text"
                 value={heroData.secondaryCtaText}
                 onChange={(e) => setHeroData({ ...heroData, secondaryCtaText: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
             <div>
@@ -147,13 +147,13 @@ export default function AdminHomepageCmsPage() {
                 type="text"
                 value={heroData.secondaryCtaLink}
                 onChange={(e) => setHeroData({ ...heroData, secondaryCtaLink: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
           </div>
         </div>
 
-        <div className="pt-4 border-t border-[#222634]">
+        <div className="pt-4 border-t border-gray-200">
           <button
             type="submit"
             disabled={saving}

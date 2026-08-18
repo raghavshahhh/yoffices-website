@@ -54,8 +54,8 @@ export default function AdminWorkspacesCmsPage() {
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634]">
-        <h1 className="text-2xl font-black text-white font-sans">Workspace Types & Pricing CMS</h1>
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200">
+        <h1 className="text-2xl font-black text-gray-900 font-sans">Workspace Types & Pricing CMS</h1>
         <p className="text-xs text-gray-400 mt-1">
           Manage starting rates, seat units, descriptions, and feature checklists.
         </p>
@@ -78,11 +78,11 @@ export default function AdminWorkspacesCmsPage() {
               onClick={() => setSelectedWs(ws)}
               className={`w-full p-4 rounded-xl text-left border transition-all ${
                 selectedWs?.id === ws.id
-                  ? 'bg-[#1B202B] border-[#C91D24] text-white shadow-md'
-                  : 'bg-[#14171F] border-[#222634] text-gray-400 hover:text-white hover:bg-[#1B202B]'
+                  ? 'bg-gray-50 border border-gray-200 border-[#C91D24] text-white shadow-md'
+                  : 'bg-white border border-gray-200 shadow-xs border-gray-200 text-gray-400 hover:text-white hover:bg-gray-50 border border-gray-200'
               }`}
             >
-              <div className="font-bold text-sm text-white">{ws.name}</div>
+              <div className="font-bold text-sm text-gray-900">{ws.name}</div>
               <div className="text-xs text-[#C5A880] mt-1 font-semibold">
                 Starting: {ws.startingPrice} /{ws.priceUnit}
               </div>
@@ -92,9 +92,9 @@ export default function AdminWorkspacesCmsPage() {
 
         {/* Editor Form on Right */}
         {selectedWs && (
-          <div className="lg:col-span-2 bg-[#14171F] p-6 sm:p-8 rounded-2xl border border-[#222634]">
+          <div className="lg:col-span-2 bg-white border border-gray-200 shadow-xs p-6 sm:p-8 rounded-2xl border border-gray-200">
             <form onSubmit={handleSave} className="space-y-5">
-              <h2 className="text-lg font-bold text-white border-b border-[#222634] pb-2">
+              <h2 className="text-lg font-bold text-gray-900 border-b border-gray-200 pb-2">
                 Edit: {selectedWs.name}
               </h2>
 
@@ -108,7 +108,7 @@ export default function AdminWorkspacesCmsPage() {
                     required
                     value={selectedWs.startingPrice}
                     onChange={(e) => setSelectedWs({ ...selectedWs, startingPrice: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#1B202B] border border-[#2A3040] text-sm text-white outline-none focus:border-[#C91D24]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-sm text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900"
                   />
                 </div>
 
@@ -121,7 +121,7 @@ export default function AdminWorkspacesCmsPage() {
                     required
                     value={selectedWs.priceUnit}
                     onChange={(e) => setSelectedWs({ ...selectedWs, priceUnit: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#1B202B] border border-[#2A3040] text-sm text-white outline-none focus:border-[#C91D24]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-sm text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900"
                   />
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function AdminWorkspacesCmsPage() {
                   rows={2}
                   value={selectedWs.shortDesc}
                   onChange={(e) => setSelectedWs({ ...selectedWs, shortDesc: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none focus:border-[#C91D24]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900"
                 />
               </div>
 
@@ -146,7 +146,7 @@ export default function AdminWorkspacesCmsPage() {
                   rows={4}
                   value={selectedWs.fullDesc}
                   onChange={(e) => setSelectedWs({ ...selectedWs, fullDesc: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none focus:border-[#C91D24]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900"
                 />
               </div>
 
@@ -158,7 +158,7 @@ export default function AdminWorkspacesCmsPage() {
                   type="url"
                   value={selectedWs.heroImage}
                   onChange={(e) => setSelectedWs({ ...selectedWs, heroImage: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none focus:border-[#C91D24]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900"
                 />
               </div>
 

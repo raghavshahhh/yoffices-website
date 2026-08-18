@@ -75,9 +75,9 @@ export default function AdminLocationsCmsPage() {
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634] flex items-center justify-between">
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-white font-sans">Centers & Locations CMS</h1>
+          <h1 className="text-2xl font-black text-gray-900 font-sans">Centers & Locations CMS</h1>
           <p className="text-xs text-gray-400 mt-1">
             Create and edit operational centers with distinct workspace vs corporate addresses.
           </p>
@@ -108,11 +108,11 @@ export default function AdminLocationsCmsPage() {
               onClick={() => setSelectedLoc(loc)}
               className={`w-full p-4 rounded-xl text-left border transition-all ${
                 selectedLoc?.id === loc.id
-                  ? 'bg-[#1B202B] border-[#C91D24] text-white shadow-md'
-                  : 'bg-[#14171F] border-[#222634] text-gray-400 hover:text-white'
+                  ? 'bg-gray-50 border border-gray-200 border-[#C91D24] text-white shadow-md'
+                  : 'bg-white border border-gray-200 shadow-xs border-gray-200 text-gray-400 hover:text-white'
               }`}
             >
-              <div className="font-bold text-sm text-white">{loc.name}</div>
+              <div className="font-bold text-sm text-gray-900">{loc.name}</div>
               <div className="text-xs text-gray-400 mt-0.5">{loc.city} • {loc.status}</div>
             </button>
           ))}
@@ -120,9 +120,9 @@ export default function AdminLocationsCmsPage() {
 
         {/* Right Editor */}
         {selectedLoc && (
-          <div className="lg:col-span-2 bg-[#14171F] p-6 sm:p-8 rounded-2xl border border-[#222634]">
+          <div className="lg:col-span-2 bg-white border border-gray-200 shadow-xs p-6 sm:p-8 rounded-2xl border border-gray-200">
             <form onSubmit={handleSave} className="space-y-4">
-              <h2 className="text-base font-bold text-white border-b border-[#222634] pb-2">
+              <h2 className="text-base font-bold text-gray-900 border-b border-gray-200 pb-2">
                 Edit: {selectedLoc.name}
               </h2>
 
@@ -134,7 +134,7 @@ export default function AdminLocationsCmsPage() {
                     required
                     value={selectedLoc.name}
                     onChange={(e) => setSelectedLoc({ ...selectedLoc, name: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                    className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
                   />
                 </div>
                 <div>
@@ -144,7 +144,7 @@ export default function AdminLocationsCmsPage() {
                     required
                     value={selectedLoc.slug}
                     onChange={(e) => setSelectedLoc({ ...selectedLoc, slug: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                    className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
                   />
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function AdminLocationsCmsPage() {
                     required
                     value={selectedLoc.city}
                     onChange={(e) => setSelectedLoc({ ...selectedLoc, city: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                    className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
                   />
                 </div>
                 <div>
@@ -165,7 +165,7 @@ export default function AdminLocationsCmsPage() {
                   <select
                     value={selectedLoc.status}
                     onChange={(e) => setSelectedLoc({ ...selectedLoc, status: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                    className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
                   >
                     <option value="Operational">Operational</option>
                     <option value="Upcoming (Q3 2026)">Upcoming</option>
@@ -183,7 +183,7 @@ export default function AdminLocationsCmsPage() {
                   required
                   value={selectedLoc.workspaceAddress}
                   onChange={(e) => setSelectedLoc({ ...selectedLoc, workspaceAddress: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                  className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
                 />
               </div>
 
@@ -195,7 +195,7 @@ export default function AdminLocationsCmsPage() {
                   type="text"
                   value={selectedLoc.corporateAddress || ''}
                   onChange={(e) => setSelectedLoc({ ...selectedLoc, corporateAddress: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                  className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
                 />
               </div>
 
@@ -207,7 +207,7 @@ export default function AdminLocationsCmsPage() {
                   type="url"
                   value={selectedLoc.googleMapsUrl}
                   onChange={(e) => setSelectedLoc({ ...selectedLoc, googleMapsUrl: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                  className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
                 />
               </div>
 

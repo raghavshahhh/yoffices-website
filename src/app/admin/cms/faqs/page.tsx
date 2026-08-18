@@ -83,8 +83,8 @@ export default function AdminFaqsCmsPage() {
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634]">
-        <h1 className="text-2xl font-black text-white font-sans">Frequently Asked Questions CMS</h1>
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200">
+        <h1 className="text-2xl font-black text-gray-900 font-sans">Frequently Asked Questions CMS</h1>
         <p className="text-xs text-gray-400 mt-1">Manage public Q&A across all service categories.</p>
       </div>
 
@@ -96,8 +96,8 @@ export default function AdminFaqsCmsPage() {
       )}
 
       {/* Add Form */}
-      <form onSubmit={handleAddFaq} className="bg-[#14171F] p-6 sm:p-8 rounded-2xl border border-[#222634] space-y-4">
-        <h2 className="text-base font-bold text-white border-b border-[#222634] pb-2">
+      <form onSubmit={handleAddFaq} className="bg-white border border-gray-200 shadow-xs p-6 sm:p-8 rounded-2xl border border-gray-200 space-y-4">
+        <h2 className="text-base font-bold text-gray-900 border-b border-gray-200 pb-2">
           Add New Question
         </h2>
 
@@ -107,7 +107,7 @@ export default function AdminFaqsCmsPage() {
             <select
               value={newFaq.category}
               onChange={(e) => setNewFaq({ ...newFaq, category: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+              className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
             >
               {categories.map((c) => (
                 <option key={c} value={c}>
@@ -124,7 +124,7 @@ export default function AdminFaqsCmsPage() {
               placeholder="e.g. What are the operating hours at Sector 45?"
               value={newFaq.question}
               onChange={(e) => setNewFaq({ ...newFaq, question: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+              className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function AdminFaqsCmsPage() {
             placeholder="Write clear, comprehensive explanation..."
             value={newFaq.answer}
             onChange={(e) => setNewFaq({ ...newFaq, answer: e.target.value })}
-            className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none resize-none"
+            className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none resize-none"
           />
         </div>
 
@@ -153,10 +153,10 @@ export default function AdminFaqsCmsPage() {
       {/* List */}
       <div className="space-y-3">
         {faqs.map((faq) => (
-          <div key={faq.id} className="bg-[#14171F] p-4 rounded-xl border border-[#222634] flex items-start justify-between gap-4">
+          <div key={faq.id} className="bg-white border border-gray-200 shadow-xs p-4 rounded-xl border border-gray-200 flex items-start justify-between gap-4">
             <div className="space-y-1">
               <span className="text-[10px] font-bold uppercase text-[#C91D24]">{faq.category}</span>
-              <h3 className="font-bold text-white text-sm">{faq.question}</h3>
+              <h3 className="font-bold text-gray-900 text-sm">{faq.question}</h3>
               <p className="text-xs text-gray-400 leading-relaxed">{faq.answer}</p>
             </div>
             <button

@@ -73,8 +73,8 @@ export default function AdminFranchiseCmsPage() {
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634]">
-        <h1 className="text-2xl font-black text-white font-sans">Franchise Models & Rental CMS</h1>
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200">
+        <h1 className="text-2xl font-black text-gray-900 font-sans">Franchise Models & Rental CMS</h1>
         <p className="text-xs text-gray-400 mt-1">
           Edit principal amounts, monthly rental disbursements, and 3-year totals. The public calculator reflects these changes in real-time.
         </p>
@@ -97,11 +97,11 @@ export default function AdminFranchiseCmsPage() {
               onClick={() => setSelectedModel(m)}
               className={`w-full p-4 rounded-xl text-left border transition-all ${
                 selectedModel?.id === m.id
-                  ? 'bg-[#1B202B] border-[#C91D24] text-white shadow-md'
-                  : 'bg-[#14171F] border-[#222634] text-gray-400 hover:text-white'
+                  ? 'bg-gray-50 border border-gray-200 border-[#C91D24] text-white shadow-md'
+                  : 'bg-white border border-gray-200 shadow-xs border-gray-200 text-gray-400 hover:text-white'
               }`}
             >
-              <div className="font-bold text-sm text-white">{m.name}</div>
+              <div className="font-bold text-sm text-gray-900">{m.name}</div>
               <div className="text-xs text-[#C5A880] mt-1 font-semibold">
                 Principal: {formatINR(m.principal)}
               </div>
@@ -114,9 +114,9 @@ export default function AdminFranchiseCmsPage() {
 
         {/* Right Editor */}
         {selectedModel && (
-          <div className="lg:col-span-2 bg-[#14171F] p-6 sm:p-8 rounded-2xl border border-[#222634]">
+          <div className="lg:col-span-2 bg-white border border-gray-200 shadow-xs p-6 sm:p-8 rounded-2xl border border-gray-200">
             <form onSubmit={handleSave} className="space-y-4">
-              <h2 className="text-base font-bold text-white border-b border-[#222634] pb-2">
+              <h2 className="text-base font-bold text-gray-900 border-b border-gray-200 pb-2">
                 Edit: {selectedModel.name}
               </h2>
 
@@ -130,7 +130,7 @@ export default function AdminFranchiseCmsPage() {
                     required
                     value={selectedModel.principal}
                     onChange={(e) => handlePrincipalChange(Number(e.target.value))}
-                    className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-sm text-white outline-none focus:border-[#C91D24]"
+                    className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-sm text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900"
                   />
                 </div>
 
@@ -145,15 +145,15 @@ export default function AdminFranchiseCmsPage() {
                     onChange={(e) =>
                       setSelectedModel({ ...selectedModel, monthlyRental: Number(e.target.value) })
                     }
-                    className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-sm text-white outline-none focus:border-[#C91D24]"
+                    className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-sm text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#1B202B] p-4 rounded-xl">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-gray-50 border border-gray-200 p-4 rounded-xl">
                 <div>
                   <span className="text-[10px] uppercase font-bold text-gray-400 block">Annual Rental</span>
-                  <div className="text-sm font-bold text-white mt-1">
+                  <div className="text-sm font-bold text-gray-900 mt-1">
                     {formatINR(selectedModel.annualRental)}
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function AdminFranchiseCmsPage() {
                   rows={3}
                   value={selectedModel.description}
                   onChange={(e) => setSelectedModel({ ...selectedModel, description: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none focus:border-[#C91D24]"
+                  className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none focus:border-[#C91D24] focus:bg-white text-gray-900"
                 />
               </div>
 

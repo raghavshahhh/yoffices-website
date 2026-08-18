@@ -1,10 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { AnnouncementBanner } from '@/components/layout/AnnouncementBanner';
-import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
-import { INITIAL_SITE_SETTINGS } from '@/lib/constants';
+import { PublicChromeWrapper } from '@/components/layout/PublicChromeWrapper';
 
 export const metadata: Metadata = {
   title: {
@@ -51,16 +47,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#FAF9F6] text-gray-900 selection:bg-[#C91D24] selection:text-white font-sans">
-        <AnnouncementBanner
-          enabled={INITIAL_SITE_SETTINGS.bannerEnabled}
-          text={INITIAL_SITE_SETTINGS.bannerText}
-          link={INITIAL_SITE_SETTINGS.bannerLink}
-        />
-        <Header />
-        <main className="flex-1 flex flex-col">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+      <body className="min-h-full flex flex-col bg-[#F0EFE9] text-gray-900 selection:bg-[#C91D24] selection:text-white font-sans">
+        <PublicChromeWrapper>{children}</PublicChromeWrapper>
       </body>
     </html>
   );

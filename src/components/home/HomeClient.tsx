@@ -387,7 +387,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 4. THREE SPECIALIZED VALUE PROPOSITIONS BENTO              */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <FadeUp className="text-center max-w-2xl mx-auto space-y-2">
             <span className="nestor-pill bg-black/5 font-mono text-[11px] text-gray-700">
@@ -544,7 +544,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 7. REAL CENTER PHOTO GALLERY & PHYSICAL SPACES SHOWCASE   */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeUp className="space-y-2">
@@ -755,7 +755,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 9. REAL GOOGLE REVIEWS & SOCIAL PROOF                     */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           {/* Header with Google Business Profile Rating Badge */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -918,7 +918,7 @@ export function HomeClient({
       {/* ========================================================= */}
       {/* 11. EDITORIAL INSIGHTS & BLOG HIGHLIGHTS                  */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-black/[0.06]">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F0EFE9] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeUp className="space-y-2">

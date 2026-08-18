@@ -86,8 +86,8 @@ export default function AdminMediaCmsPage() {
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634]">
-        <h1 className="text-2xl font-black text-white font-sans">Media & YouTube Video CMS</h1>
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200">
+        <h1 className="text-2xl font-black text-gray-900 font-sans">Media & YouTube Video CMS</h1>
         <p className="text-xs text-gray-400 mt-1">
           Add and manage YouTube videos with auto-generated thumbnails and categorizations.
         </p>
@@ -101,8 +101,8 @@ export default function AdminMediaCmsPage() {
       )}
 
       {/* Add Video Form */}
-      <div className="bg-[#14171F] p-6 sm:p-8 rounded-2xl border border-[#222634] space-y-4">
-        <h2 className="text-base font-bold text-white border-b border-[#222634] pb-2">
+      <div className="bg-white border border-gray-200 shadow-xs p-6 sm:p-8 rounded-2xl border border-gray-200 space-y-4">
+        <h2 className="text-base font-bold text-gray-900 border-b border-gray-200 pb-2">
           Add New YouTube Video
         </h2>
 
@@ -120,7 +120,7 @@ export default function AdminMediaCmsPage() {
                   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
                   setNewVideo({ ...newVideo, title, slug });
                 }}
-                className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
             <div>
@@ -130,7 +130,7 @@ export default function AdminMediaCmsPage() {
                 required
                 value={newVideo.slug}
                 onChange={(e) => setNewVideo({ ...newVideo, slug: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
           </div>
@@ -144,7 +144,7 @@ export default function AdminMediaCmsPage() {
                 placeholder="https://www.youtube.com/watch?v=..."
                 value={newVideo.youtubeUrl}
                 onChange={(e) => setNewVideo({ ...newVideo, youtubeUrl: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               />
             </div>
             <div>
@@ -152,7 +152,7 @@ export default function AdminMediaCmsPage() {
               <select
                 value={newVideo.category}
                 onChange={(e) => setNewVideo({ ...newVideo, category: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none"
               >
                 {categories.map((c) => (
                   <option key={c} value={c}>
@@ -171,12 +171,12 @@ export default function AdminMediaCmsPage() {
               placeholder="Short summary of this video..."
               value={newVideo.description}
               onChange={(e) => setNewVideo({ ...newVideo, description: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-[#1B202B] border border-[#2A3040] text-xs text-white outline-none resize-none"
+              className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 border border-gray-200 text-xs text-gray-900 outline-none resize-none"
             />
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <label className="flex items-center gap-2 text-xs font-semibold text-gray-300 cursor-pointer">
+            <label className="flex items-center gap-2 text-xs font-semibold text-gray-700 cursor-pointer">
               <input
                 type="checkbox"
                 checked={newVideo.isFeatured}
@@ -198,13 +198,13 @@ export default function AdminMediaCmsPage() {
       </div>
 
       {/* Videos List */}
-      <div className="bg-[#14171F] p-6 rounded-2xl border border-[#222634] space-y-4">
-        <h2 className="text-base font-bold text-white">Active Video Library ({videos.length})</h2>
+      <div className="bg-white border border-gray-200 shadow-xs p-6 rounded-2xl border border-gray-200 space-y-4">
+        <h2 className="text-base font-bold text-gray-900">Active Video Library ({videos.length})</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {videos.map((vid) => (
             <div
               key={vid.id}
-              className="bg-[#1B202B] rounded-xl border border-[#2A3040] overflow-hidden flex flex-col justify-between"
+              className="bg-gray-50 border border-gray-200 rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between"
             >
               <div>
                 <div className="relative h-36 w-full bg-black">
@@ -213,17 +213,17 @@ export default function AdminMediaCmsPage() {
                     alt={vid.title}
                     className="w-full h-full object-cover opacity-80"
                   />
-                  <div className="absolute top-2 left-2 bg-[#0C0E12]/90 text-[10px] uppercase font-bold text-white px-2 py-0.5 rounded">
+                  <div className="absolute top-2 left-2 bg-[#0C0E12]/90 text-[10px] uppercase font-bold text-gray-900 px-2 py-0.5 rounded">
                     {vid.category}
                   </div>
                 </div>
                 <div className="p-4 space-y-1">
-                  <h3 className="font-bold text-white text-xs line-clamp-2">{vid.title}</h3>
+                  <h3 className="font-bold text-gray-900 text-xs line-clamp-2">{vid.title}</h3>
                   <p className="text-[11px] text-gray-400 line-clamp-2">{vid.description}</p>
                 </div>
               </div>
 
-              <div className="p-4 pt-0 border-t border-[#2A3040] flex items-center justify-between mt-2">
+              <div className="p-4 pt-0 border-t border-gray-200 flex items-center justify-between mt-2">
                 <a
                   href={`/media/${vid.slug}`}
                   target="_blank"
