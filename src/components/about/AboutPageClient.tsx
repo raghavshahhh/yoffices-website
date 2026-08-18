@@ -76,12 +76,21 @@ export function AboutPageClient() {
               </p>
             </FadeUp>
 
-            <FadeUp delay={0.2} className="lg:col-span-6 relative rounded-3xl overflow-hidden shadow-2xl border border-black/5 h-[380px]">
-              <img
-                src="/images/center/meeting-cabin.jpg"
-                alt="Yoffices Sector 45 Discussion & Executive Cabin"
-                className="w-full h-full object-cover"
-              />
+            <FadeUp delay={0.2} className="lg:col-span-6 grid grid-cols-2 gap-4 h-[380px]">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-black/5 h-full">
+                <img
+                  src="/images/center/director-private-cabin.jpg"
+                  alt="Yoffices Director Cabin"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-black/5 h-full">
+                <img
+                  src="/images/center/cafe-pantry-greenwall.jpg"
+                  alt="Yoffices Gourmet Pantry & Green Wall"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </FadeUp>
           </div>
 

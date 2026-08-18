@@ -107,14 +107,39 @@ export function HomeClient({
       desc: 'Sound-isolated private office with custom wood slating & modern ambient lighting in Sector 45 Gurgaon',
     },
     {
-      src: '/images/center/entrance-biometric.jpg',
-      title: 'RFID Biometric Glass Entrance',
-      desc: '24/7 keyless secure smart card & biometric entry corridor to Yoffices workspaces',
+      src: '/images/center/director-private-cabin.jpg',
+      title: 'Director Executive Suite',
+      desc: 'Dedicated private director office with executive wood desk, AC & acoustic wall paneling',
+    },
+    {
+      src: '/images/center/manager-executive-suite.jpg',
+      title: 'Manager Executive Suite & Modern Lighting',
+      desc: 'Multi-seat manager suite with modern tri-spoke LED lighting, circular pendant lamps, and acoustic slats',
+    },
+    {
+      src: '/images/center/cafe-pantry-greenwall.jpg',
+      title: 'Gourmet Pantry & Vertical Garden Green Wall',
+      desc: 'Lush biophilic green wall with bean-to-cup automated coffee machine, water dispenser & pantry bar',
+    },
+    {
+      src: '/images/center/breakout-coffee-zone.jpg',
+      title: 'Artisan Coffee & Breakout Hub',
+      desc: 'Casual refreshment and discussion bar for impromptu founder and team breaks',
     },
     {
       src: '/images/center/meeting-cabin.jpg',
       title: 'Circular Ambient LED Discussion Cabin',
       desc: 'Executive boardroom fitted with presentation display and magnetic whiteboard',
+    },
+    {
+      src: '/images/center/entrance-biometric.jpg',
+      title: 'RFID Biometric Glass Entrance Corridor',
+      desc: '24/7 keyless secure smart card & biometric entry corridor to Yoffices workspaces',
+    },
+    {
+      src: '/images/center/lift-lobby-corridor.jpg',
+      title: 'High-Speed Elevator Lobby & Reception Access',
+      desc: 'Premium Italian granite lift lobby connecting all workspace floors in Sector 45',
     },
     {
       src: '/images/center/team-cabin.jpg',
@@ -123,7 +148,7 @@ export function HomeClient({
     },
     {
       src: '/images/center/workspace-layout.jpg',
-      title: 'Collaborative Layout & Open Desks',
+      title: 'Collaborative Open Workstations',
       desc: 'Integrated open workstations and focus breakout pods',
     },
   ];
@@ -608,9 +633,9 @@ export function HomeClient({
             </FadeUp>
           </div>
 
-          {/* Bento Photo Grid with Lightbox Triggers */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            {/* Large Feature Photo 1: Executive Cabin */}
+          {/* Bento Photo Grid with All 10 Real Center Photos */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
+            {/* Row 1: Executive Suite & Director Suite */}
             <FadeUp delay={0.05} className="md:col-span-8 relative h-[360px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(0)}>
               <img
                 src={centerPhotos[0].src}
@@ -630,7 +655,6 @@ export function HomeClient({
               </div>
             </FadeUp>
 
-            {/* Photo 2: Biometric Entrance */}
             <FadeUp delay={0.1} className="md:col-span-4 relative h-[360px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(1)}>
               <img
                 src={centerPhotos[1].src}
@@ -643,49 +667,54 @@ export function HomeClient({
               </div>
               <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
                 <span className="nestor-pill-dark font-mono text-[9px] uppercase font-bold">
-                  SMART SECURITY
+                  DIRECTOR CABIN
                 </span>
                 <h3 className="text-lg font-bold font-sans">{centerPhotos[1].title}</h3>
                 <p className="text-xs text-gray-300 line-clamp-2">{centerPhotos[1].desc}</p>
               </div>
             </FadeUp>
 
-            {/* Photo 3: Meeting Cabin */}
-            <FadeUp delay={0.15} className="md:col-span-4 relative h-[280px] sm:h-[340px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(2)}>
+            {/* Row 2: Manager Suite & Gourmet Pantry Green Wall */}
+            <FadeUp delay={0.15} className="md:col-span-6 relative h-[300px] sm:h-[380px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(2)}>
               <img
                 src={centerPhotos[2].src}
                 alt={centerPhotos[2].title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                <ZoomIn className="w-3.5 h-3.5" />
+              <div className="absolute top-4 right-4 p-2 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-4 h-4" />
               </div>
-              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
-                <h4 className="text-base font-bold font-sans">{centerPhotos[2].title}</h4>
-                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[2].desc}</p>
+              <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span className="nestor-pill-dark font-mono text-[9px] uppercase font-bold">
+                  MANAGER SUITE
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold font-sans">{centerPhotos[2].title}</h3>
+                <p className="text-xs text-gray-300 line-clamp-1">{centerPhotos[2].desc}</p>
               </div>
             </FadeUp>
 
-            {/* Photo 4: Team Cabin */}
-            <FadeUp delay={0.2} className="md:col-span-4 relative h-[280px] sm:h-[340px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(3)}>
+            <FadeUp delay={0.2} className="md:col-span-6 relative h-[300px] sm:h-[380px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(3)}>
               <img
                 src={centerPhotos[3].src}
                 alt={centerPhotos[3].title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                <ZoomIn className="w-3.5 h-3.5" />
+              <div className="absolute top-4 right-4 p-2 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-4 h-4" />
               </div>
-              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
-                <h4 className="text-base font-bold font-sans">{centerPhotos[3].title}</h4>
-                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[3].desc}</p>
+              <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span className="nestor-pill-dark font-mono text-[9px] uppercase font-bold">
+                  PANTRY & GREEN WALL
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold font-sans">{centerPhotos[3].title}</h3>
+                <p className="text-xs text-gray-300 line-clamp-1">{centerPhotos[3].desc}</p>
               </div>
             </FadeUp>
 
-            {/* Photo 5: Workspace Layout */}
-            <FadeUp delay={0.25} className="md:col-span-4 relative h-[280px] sm:h-[340px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(4)}>
+            {/* Row 3: Coffee Hub, Meeting Cabin & Biometric Entrance */}
+            <FadeUp delay={0.25} className="md:col-span-4 relative h-[260px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(4)}>
               <img
                 src={centerPhotos[4].src}
                 alt={centerPhotos[4].title}
@@ -698,6 +727,87 @@ export function HomeClient({
               <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
                 <h4 className="text-base font-bold font-sans">{centerPhotos[4].title}</h4>
                 <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[4].desc}</p>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.3} className="md:col-span-4 relative h-[260px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(5)}>
+              <img
+                src={centerPhotos[5].src}
+                alt={centerPhotos[5].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-3.5 h-3.5" />
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
+                <h4 className="text-base font-bold font-sans">{centerPhotos[5].title}</h4>
+                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[5].desc}</p>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.35} className="md:col-span-4 relative h-[260px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(6)}>
+              <img
+                src={centerPhotos[6].src}
+                alt={centerPhotos[6].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-3.5 h-3.5" />
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
+                <h4 className="text-base font-bold font-sans">{centerPhotos[6].title}</h4>
+                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[6].desc}</p>
+              </div>
+            </FadeUp>
+
+            {/* Row 4: Lift Lobby, Team Cabin & Open Workstations */}
+            <FadeUp delay={0.4} className="md:col-span-4 relative h-[260px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(7)}>
+              <img
+                src={centerPhotos[7].src}
+                alt={centerPhotos[7].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-3.5 h-3.5" />
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
+                <h4 className="text-base font-bold font-sans">{centerPhotos[7].title}</h4>
+                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[7].desc}</p>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.45} className="md:col-span-4 relative h-[260px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(8)}>
+              <img
+                src={centerPhotos[8].src}
+                alt={centerPhotos[8].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-3.5 h-3.5" />
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
+                <h4 className="text-base font-bold font-sans">{centerPhotos[8].title}</h4>
+                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[8].desc}</p>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.5} className="md:col-span-4 relative h-[260px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border border-black/10 group cursor-pointer" onClick={() => openLightbox(9)}>
+              <img
+                src={centerPhotos[9].src}
+                alt={centerPhotos[9].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-3.5 h-3.5" />
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
+                <h4 className="text-base font-bold font-sans">{centerPhotos[9].title}</h4>
+                <p className="text-[11px] text-gray-300 line-clamp-1">{centerPhotos[9].desc}</p>
               </div>
             </FadeUp>
           </div>
