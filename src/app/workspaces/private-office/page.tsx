@@ -14,8 +14,8 @@ export default function PrivateOfficePage() {
     slug: 'private-office',
     shortDesc: 'Acoustic lockable cabins for teams of 3 to 50+ members.',
     fullDesc: 'Enterprise-grade private office cabins with acoustic double-glazed glass partitions, dedicated biometric locks, redundant 1Gbps fiber internet, and complimentary conference room credits.',
-    startingPrice: '₹8,500',
-    priceUnit: 'seat / month',
+    startingPrice: '₹25,000',
+    priceUnit: 'lockable office / month',
     heroImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80',
     idealFor: 'Growing tech startups, corporate branches, legal firms, and funded ventures requiring physical privacy.',
     features: [

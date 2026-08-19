@@ -14,8 +14,8 @@ export default function CoworkingPage() {
     slug: 'coworking',
     shortDesc: 'Agile hot desking across vibrant open lounges and quiet zones.',
     fullDesc: 'Ultimate agility for modern freelancers, digital creators, and remote teams. Plug into any open desk across our sunlit collaborative lounges with instant 1Gbps Wi-Fi, free artisanal beverages, and meeting room credits.',
-    startingPrice: '₹4,500',
-    priceUnit: 'seat / month',
+    startingPrice: '₹5,000',
+    priceUnit: 'desk / month (or ₹499/day)',
     heroImage: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=80',
     idealFor: 'Digital nomads, freelance consultants, startup founders, and hybrid teams seeking flexible access.',
     features: [

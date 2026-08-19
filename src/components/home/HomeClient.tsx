@@ -30,6 +30,10 @@ import {
   ExternalLink,
   ZoomIn,
   PenLine,
+  Mic,
+  Bed,
+  Coffee,
+  Car,
 } from 'lucide-react';
 import {
   WorkspaceTypeData,
@@ -287,7 +291,7 @@ export function HomeClient({
                 </div>
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <div className="text-sm font-bold">Dedicated Workstations</div>
-                  <div className="text-xs text-[#C5A880] font-mono">From ₹5,500 / seat</div>
+                  <div className="text-xs text-[#C5A880] font-mono">From ₹5,000 / desk</div>
                 </div>
               </div>
 
@@ -569,6 +573,258 @@ export function HomeClient({
               >
                 <span>Work + Stay Living</span>
                 <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 4B. GURGAON EXCLUSIVE MOVE-IN DEALS & ALL-INCLUSIVE BENTO */}
+      {/* ========================================================= */}
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#111111] text-white border-b border-white/10 relative overflow-hidden">
+        {/* Subtle Background Glow */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C91D24]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#C5A880]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto space-y-12 relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <FadeUp className="space-y-3">
+              <div className="inline-flex items-center gap-2">
+                <span className="nestor-pill-dark border-red-500/30 text-[#C91D24] font-mono text-[10px] sm:text-[11px]">
+                  [ GURGAON SPECIAL MOVE-IN OFFER ]
+                </span>
+                <span className="nestor-pill-dark border-emerald-500/30 text-emerald-400 font-mono text-[10px] sm:text-[11px] flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3" />
+                  PLUG & PLAY READY 🚀
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-black text-white font-sans tracking-tight leading-tight">
+                Gurgaon mein sasta bhi, aur Premium bhi.
+              </h2>
+              <p className="text-sm sm:text-base text-gray-400 max-w-2xl leading-relaxed">
+                Yahan sirf <span className="text-white font-bold underline decoration-[#C91D24] decoration-2 underline-offset-4">₹25,000</span> mein aapka Lockable Boss Cabin taiyaar hai — bas aakar kaam shuru kar dijiye! Zero setup hassle, transparent monthly rates.
+              </p>
+            </FadeUp>
+
+            <FadeUp delay={0.1}>
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md text-xs font-mono space-y-2 text-gray-300 min-w-[280px]">
+                <div className="text-white font-bold flex items-center justify-between">
+                  <span>MOVE-IN TERMS:</span>
+                  <span className="text-[#C91D24] font-mono">[ 100% CLEAR ]</span>
+                </div>
+                <div className="space-y-1 text-[11px]">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
+                    <span>2 Months Security Deposit</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
+                    <span>1 Month Advance Rent</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
+                    <span>11 Months Flexible Lease</span>
+                  </div>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1: Lockable Boss Cabin */}
+            <FadeUp delay={0.1} className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-[#C91D24] transition-all flex flex-col justify-between space-y-6 group">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 text-[#C91D24] flex items-center justify-center">
+                    <Building2 className="w-5 h-5" />
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full bg-[#C91D24] text-white font-mono text-[9px] font-bold">
+                    MOST POPULAR
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-white font-sans group-hover:text-[#C91D24] transition-colors">
+                    Lockable Boss Cabin
+                  </h3>
+                  <div className="text-2xl font-black text-white font-sans mt-2">
+                    ₹25,000<span className="text-xs text-gray-400 font-normal font-mono"> / month</span>
+                  </div>
+                </div>
+
+                <div className="space-y-2 text-xs text-gray-300 pt-2 border-t border-white/10">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Private Boss Cabin with Sound Insulation</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Lounge + VIP Meeting Space</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Unlimited Parking & Cafeteria</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Work + Stay Setup Available</span>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                href="/workspaces/private-office"
+                className="w-full py-2.5 rounded-xl bg-[#C91D24] hover:bg-[#A3151B] text-white font-bold text-xs text-center transition-all shadow-md block"
+              >
+                Book ₹25,000 Cabin
+              </Link>
+            </FadeUp>
+
+            {/* Card 2: Work Desk */}
+            <FadeUp delay={0.15} className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-emerald-500/50 transition-all flex flex-col justify-between space-y-6 group">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                    <Layers className="w-5 h-5" />
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 font-mono text-[9px] font-bold">
+                    PLUG & PLAY
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-white font-sans group-hover:text-emerald-400 transition-colors">
+                    Dedicated Work Desk
+                  </h3>
+                  <div className="text-2xl font-black text-white font-sans mt-2">
+                    ₹5,000<span className="text-xs text-gray-400 font-normal font-mono"> / month</span>
+                  </div>
+                </div>
+
+                <div className="space-y-2 text-xs text-gray-300 pt-2 border-t border-white/10">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Assigned Ergonomic Mesh Desk</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Personal Lockable Storage Pedestal</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>1Gbps Redundant Dual-ISP Fiber</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Unlimited Coffee, Tea & Cafeteria</span>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                href="/workspaces/workstations"
+                className="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs text-center transition-all border border-white/10 block"
+              >
+                Reserve ₹5,000 Desk
+              </Link>
+            </FadeUp>
+
+            {/* Card 3: Dormitory Stay */}
+            <FadeUp delay={0.2} className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-500/50 transition-all flex flex-col justify-between space-y-6 group">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center">
+                    <Bed className="w-5 h-5" />
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full bg-amber-950 text-amber-400 border border-amber-800 font-mono text-[9px] font-bold">
+                    ZERO COMMUTE
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-white font-sans group-hover:text-amber-400 transition-colors">
+                    Dormitory Stay
+                  </h3>
+                  <div className="text-2xl font-black text-white font-sans mt-2">
+                    ₹5,000<span className="text-xs text-gray-400 font-normal font-mono"> / month</span>
+                  </div>
+                </div>
+
+                <div className="space-y-2 text-xs text-gray-300 pt-2 border-t border-white/10">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Dedicated AC Dormitory Bunk Pod</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>24/7 Workspace Access Downstairs</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Hot Water Geysers & Clean Linens</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Personal Lockable Steel Wardrobe</span>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                href="/work-stay"
+                className="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs text-center transition-all border border-white/10 block"
+              >
+                Join ₹5,000 Co-Living
+              </Link>
+            </FadeUp>
+
+            {/* Card 4: Shared Employee & Studio */}
+            <FadeUp delay={0.25} className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-all flex flex-col justify-between space-y-6 group">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center">
+                    <UserCheck className="w-5 h-5" />
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-800 font-mono text-[9px] font-bold">
+                    65% PAYROLL SAVED
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-white font-sans group-hover:text-blue-400 transition-colors">
+                    Shared Employee
+                  </h3>
+                  <div className="text-2xl font-black text-white font-sans mt-2">
+                    ₹7,000<span className="text-xs text-gray-400 font-normal font-mono"> / month</span>
+                  </div>
+                </div>
+
+                <div className="space-y-2 text-xs text-gray-300 pt-2 border-t border-white/10">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Reception & Visitor Concierge</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>On-Site IT & Network Support</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Admin, Filing & CA Bookkeeping</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                    <span className="text-amber-300 font-bold">Podcast / YouTube Studio Ready</span>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                href="/shared-employee"
+                className="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs text-center transition-all border border-white/10 block"
+              >
+                Hire ₹7,000 Talent
               </Link>
             </FadeUp>
           </div>

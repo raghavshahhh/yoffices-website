@@ -14,7 +14,7 @@ export default function WorkstationsPage() {
     slug: 'workstations',
     shortDesc: 'Personal assigned desks with lockable drawers in open workspace floor.',
     fullDesc: 'Your own reserved desk equipped with high-back ergonomic mesh seating, private lockable pedestal, universal power ports, high-speed fiber internet, and seamless access to communal phone booths and meeting suites.',
-    startingPrice: '₹5,500',
+    startingPrice: '₹5,000',
     priceUnit: 'desk / month',
     heroImage: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=80',
     idealFor: 'Solo founders, remote software developers, financial analysts, and independent consultants.',

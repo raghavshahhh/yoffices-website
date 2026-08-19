@@ -43,8 +43,8 @@ export function SharedEmployeeClient() {
       desc: 'Professional front-desk executive greeting your visitors, answering dedicated company phone lines, receiving courier deliveries, and managing daily log books.',
       icon: Headphones,
       traditionalCost: 28000,
-      sharedCost: 4999,
-      savings: 'Save ₹23,001 / mo',
+      sharedCost: 7000,
+      savings: 'Save ₹21,000 / mo',
       responsibilities: [
         'Dedicated visitor welcoming & badge issuance',
         'Company phone call answering & call patch',
@@ -57,8 +57,8 @@ export function SharedEmployeeClient() {
       desc: 'Hardware troubleshooting, printer setup, VPN/firewall configuration, dual-ISP network diagnostics, and workstation onboarding on demand.',
       icon: Monitor,
       traditionalCost: 40000,
-      sharedCost: 6999,
-      savings: 'Save ₹33,001 / mo',
+      sharedCost: 7000,
+      savings: 'Save ₹33,000 / mo',
       responsibilities: [
         'Ethernet LAN port patching & Wi-Fi diagnostics',
         'Network printer & biometric scanner configuration',
@@ -71,8 +71,8 @@ export function SharedEmployeeClient() {
       desc: 'Filing, courier dispatches, stationery ordering, meeting room scheduling, cafeteria supplies procurement, and vendor coordination.',
       icon: Users,
       traditionalCost: 25000,
-      sharedCost: 4499,
-      savings: 'Save ₹20,501 / mo',
+      sharedCost: 7000,
+      savings: 'Save ₹18,000 / mo',
       responsibilities: [
         'Daily vendor coordination & petty expense tracking',
         'Stationery, printing & office supplies dispatch',
@@ -85,8 +85,8 @@ export function SharedEmployeeClient() {
       desc: 'Basic accounts entry, vendor invoice reconciliation, GST billing prep, TDS challan records, and expense tracking assistance.',
       icon: FileSpreadsheet,
       traditionalCost: 35000,
-      sharedCost: 5999,
-      savings: 'Save ₹29,001 / mo',
+      sharedCost: 7000,
+      savings: 'Save ₹28,000 / mo',
       responsibilities: [
         'Vendor tax invoice checking & recordkeeping',
         'Monthly expense categorization & receipts sorting',
